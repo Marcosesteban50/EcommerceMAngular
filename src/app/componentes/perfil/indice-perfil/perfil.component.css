@@ -1,0 +1,93 @@
+
+/* ================= CONTENEDOR ================= */
+.perfil-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 35px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+  transition: all 0.25s ease;
+}
+
+.perfil-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+/* ================= TITULO ================= */
+.perfil-container h2 {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.perfil-container h2::after {
+  content: "";
+  width: 60px;
+  height: 3px;
+  margin: 10px auto 0;
+  display: block;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #2563eb);
+}
+
+/* ================= ITEMS ================= */
+.perfil-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+}
+
+.perfil-item:hover {
+  background: #f3f4f6;
+}
+
+/* ================= LABEL ================= */
+.perfil-label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ================= VALUE ================= */
+.perfil-value {
+  font-weight: 500;
+  font-size: 14px;
+  color: #111827;
+  text-align: right;
+  max-width: 60%;
+  word-break: break-word;
+}
+
+/* ================= BOTON EDITAR ================= */
+.BTN-Editar {
+  display: block;
+  margin: 25px auto;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  background: linear-gradient(135deg, #2563eb);
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.25s ease;
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.25);
+}
+
+.BTN-Editar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(99, 102, 241, 0.35);
+}
+
+/* Icono */
+.icon-edit {
+  margin-right: 6px;
+}

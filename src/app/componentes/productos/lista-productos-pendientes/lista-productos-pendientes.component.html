@@ -1,0 +1,45 @@
+<app-listado-generico [listado]="productos">
+  <ng-container contenido>
+
+    <div class="container mt-4">
+      <h2 class="text-center mb-4">Productos Pendientes</h2>
+
+      <div class="row">
+        @for (producto of productos; track $index) {
+        <div class="producto-item">
+          <div class="card h-100 shadow-sm">
+
+            <img [src]="producto.imagenUrl" class="card-img-top" alt="{{ producto.nombre }}">
+
+            <div class="card-body">
+              <h5 class="card-title">{{ producto.nombre }}</h5>
+              <p class="card-text text-muted">{{ producto.descripcion }}</p>
+              <p class="fw-bold">${{ producto.precio }}</p>
+            </div>
+
+            <app-autorizado rol="Admin">
+              <ng-container autorizado>
+
+                <div class="card-actions">
+
+                  <button (click)="aprobarProducto(producto.id)" class="BTN-Editar">
+                     Aprobar
+                  </button>
+
+                  <button (click)="rechazarProducto(producto.id)" class="BTN-Editar rechazo">
+                     Rechazar
+                  </button>
+                </div>
+
+              </ng-container>
+            </app-autorizado>
+
+          </div>
+        </div>
+        }
+      </div>
+
+    </div>
+
+  </ng-container>
+</app-listado-generico>

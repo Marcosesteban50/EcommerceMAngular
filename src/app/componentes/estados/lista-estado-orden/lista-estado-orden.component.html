@@ -1,0 +1,40 @@
+<app-listado-generico [listado]="estadoOrdenesLista">
+  <ng-container contenido>
+
+    <div class="container mt-4">
+      <h2 class="text-center mb-4">Estados disponibles</h2>
+
+      @if (cargando) {
+      <div class="text-center">Cargando Estados...</div>
+      } @else if (error) {
+      <div class="text-danger text-center">{{ error }}</div>
+      } @else {
+      <div class="row">
+        @for (x of estadoOrdenesLista; track $index) {
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+
+            <div class="card-body">
+              <h5 class="card-title">{{$index + 1}}) {{ x.nombre }}</h5>
+
+              <div class="card-actions">
+                <button mat-flat-button routerLink="/estadosOrdenes/editar/{{x.id}}" class="BTN-Editar">
+
+                  Editar
+                </button>
+                <button mat-flat-button (click)="borrar(x.id)" class="BTN-Borrar">
+
+                  Borrar
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        }
+      </div>
+      }
+    </div>
+
+  </ng-container>
+</app-listado-generico>

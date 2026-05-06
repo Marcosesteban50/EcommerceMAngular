@@ -1,0 +1,50 @@
+<!--burbuja-->
+<div class="chat-bubble" (click)="toggleChat()">
+  <i class="bi bi-chat-dots-fill"></i>
+</div>
+
+<!--ventana-->
+@if(chatAbierto){
+
+<div class="chat-window">
+
+
+    <!-- Titulo -->
+    <div class="chat-header">
+        <span>
+            Asistente de Ia</span>
+        <button (click)="toggleChat()">✖</button>
+    </div>
+
+
+    <!-- Cuerpo -->
+    <div class="chat-body">
+
+        @for (msg of mensajes; track msg) {
+
+        @if(msg.tipo === 'user'){
+        <div class="msg-user">{{msg.texto}}</div>
+        }
+
+        @if(msg.tipo === 'bot'){
+        <div class="msg-bot">{{msg.texto}}</div>
+        }
+
+        }
+
+    </div>
+
+    <!-- Chat para preguntar -->
+    <div class="chat-input">
+
+        <input [(ngModel)]="Pregunta" placeholder="Pregunta algo..." (keyup.enter)="enviarConsulta()">
+
+        <button (click)="enviarConsulta()" [disabled]="cargando">
+            {{ cargando ? '...' : 'Enviar' }}
+        </button>
+
+    </div>
+
+</div>
+
+}

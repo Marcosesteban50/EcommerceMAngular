@@ -1,0 +1,122 @@
+/* CONTENEDOR PRINCIPAL */
+.google-login-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  width: 100%;
+}
+
+/* BOTÓN */
+.google-btn {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 1px solid #dadce0;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+/* HOVER */
+.google-btn:hover {
+  background-color: #f7f8f9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* DESHABILITADO */
+.google-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* CONTENIDO INTERNO */
+.google-btn-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* ICONO */
+.google-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* TEXTO */
+.google-btn-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: #3c4043;
+}
+
+/* SPINNER */
+.spinner-container {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #dadce0;
+  border-top: 2px solid #4285F4;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ANIMACIÓN */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* BOTÓN OFICIAL OCULTO */
+.google-official-btn {
+  display: none;
+}
+
+/* ERROR */
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff1f0;
+  color: #cf1322;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 13px;
+  border: 1px solid #ffa39e;
+  max-width: 350px;
+  width: 100%;
+}
+
+.error-icon {
+  font-weight: bold;
+}
+
+.retry-btn {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  color: #cf1322;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.retry-btn:hover {
+  text-decoration: underline;
+}

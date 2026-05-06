@@ -1,0 +1,177 @@
+
+/* ================= CONTENEDOR ================= */
+.container {
+  max-width: 900px;
+}
+
+/* ================= TITULO ================= */
+h2 {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+h2::after {
+  content: "";
+  width: 60px;
+  height: 3px;
+  margin: 10px auto 0;
+  display: block;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #2563eb);
+}
+
+/* ================= ITEM ================= */
+.carrito-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.25s ease;
+}
+
+.carrito-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ================= IMAGEN ================= */
+.carrito-img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ================= INFO ================= */
+.carrito-info {
+  flex: 1;
+}
+
+.carrito-info h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.carrito-info small {
+  display: block;
+  color: #6b7280;
+  margin-bottom: 5px;
+}
+
+.carrito-info b {
+  font-size: 14px;
+}
+
+/* ================= CONTROLES CANTIDAD ================= */
+.cantidad-controles {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cantidad-controles span {
+  font-weight: 600;
+  min-width: 25px;
+  text-align: center;
+}
+
+/* Botones */
+.btn-plus,
+.btn-less,
+.btn-delete {
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: white;
+}
+
+/* + */
+.btn-plus {
+  background: #10b981;
+}
+
+.btn-plus:hover {
+  background: #059669;
+  transform: scale(1.05);
+}
+
+/* - */
+.btn-less {
+  background: #f59e0b;
+}
+
+.btn-less:hover {
+  background: #d97706;
+  transform: scale(1.05);
+}
+
+/* delete */
+.btn-delete {
+  background: #ef4444;
+}
+
+.btn-delete:hover {
+  background: #dc2626;
+  transform: scale(1.05);
+}
+
+/* ================= TOTAL ================= */
+.carrito-total {
+  margin-top: 30px;
+  padding: 25px;
+  border-radius: 16px;
+  background: #f9fafb;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.carrito-total h3 {
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* ================= BOTONES ACCION ================= */
+.btn-vaciar,
+.btn-comprar {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Vaciar */
+.btn-vaciar {
+  background: #ef4444;
+  color: white;
+}
+
+.btn-vaciar:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+}
+
+/* Comprar */
+.btn-comprar {
+  background: linear-gradient(135deg, #2563eb);
+  color: white;
+}
+
+.btn-comprar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+}

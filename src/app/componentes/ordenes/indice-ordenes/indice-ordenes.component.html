@@ -1,0 +1,54 @@
+<h2>Mis Órdenes</h2>
+
+<app-listado-generico [listado]="ordenes">
+    <ng-container contenido>
+
+        @for (orden of ordenes; track $index) {
+        <div class="orden-card">
+
+            <h3>Orden #{{ orden.id }}</h3>
+
+            <p><strong>Email:</strong> {{ orden.emailUsuario}}</p>
+            <p><strong>Fecha:</strong> {{ orden.fecha | date:'short' }}</p>
+            <p><strong>Dirección:</strong> {{ orden.direccionEnvio }}</p>
+            <p><strong>Total:</strong> {{ orden.total | currency }}</p>
+
+
+
+
+            <p>
+                 <strong>
+                    Estado de la Orden:
+                </strong>
+                <strong class="estadoOrden">
+                    {{orden.estadoOrden.nombre}}
+
+                </strong>
+            </p>
+
+
+
+
+
+            <p>
+                <strong>
+                    Estado del Pago:
+                </strong>
+                <strong class="estadoPago">
+                    {{orden.estadoPago.nombre}}
+                </strong>
+            </p>
+
+        </div>
+
+        <button mat-flat-button routerLink="/admin/ordenes/editar/{{orden.id}}" class="BTN-Editar">
+            Ver Orden
+        </button>
+        }
+
+
+
+
+
+    </ng-container>
+</app-listado-generico>

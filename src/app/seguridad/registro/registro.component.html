@@ -1,0 +1,11 @@
+<h2 class="text-center mb-4">Registrate</h2>
+
+<app-formulario-autenticacion 
+[errores]="errores"
+ (posteoFormulario)="registrar($event)">
+</app-formulario-autenticacion>
+
+<!-- Botón de Google -->
+<div class="mb-4">
+  <app-google-login-button></app-google-login-button>
+</div>

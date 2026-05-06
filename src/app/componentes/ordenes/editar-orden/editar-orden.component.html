@@ -1,0 +1,8 @@
+<h2>Editar {{orden?.id}}</h2>
+
+
+
+@if(orden){
+
+<app-formulario-ordenes [modelo]="orden" (posteoFormulario)="guardarCambios($event)"></app-formulario-ordenes>
+}

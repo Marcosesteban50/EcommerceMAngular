@@ -1,0 +1,80 @@
+/* CONTENEDOR PRINCIPAL */
+.splash {
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* EFECTO FADE OUT */
+.splash.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* CONTENIDO */
+.content {
+    text-align: center;
+}
+
+/* LOGO CONTENEDOR */
+.logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #1e1e2f, #252538);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(13, 110, 253, 0.3);
+}
+
+/* TEXTO LOGO */
+.logo-text {
+    font-size: 48px;
+    font-weight: bold;
+    color: #0d6efd;
+    opacity: 0;
+    animation: drawLogo 1s ease forwards;
+}
+
+
+/* ANIMACIÓN TIPO "DIBUJO" */
+@keyframes drawLogo {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ANIMACIÓN TEXTO */
+@keyframes fadeText {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

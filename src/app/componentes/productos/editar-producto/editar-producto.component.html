@@ -1,0 +1,9 @@
+<h2>Editar {{producto?.nombre}}</h2>
+
+
+@if(producto){
+
+<app-formulario-productos [modelo]="producto" (posteoFormulario)="guardarCambios($event)"></app-formulario-productos>
+}@else {
+<p>Cargando</p>
+}

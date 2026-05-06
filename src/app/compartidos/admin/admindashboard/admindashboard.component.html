@@ -1,0 +1,72 @@
+@if (cargando) {
+  <p>Cargando dashboard...</p>
+}
+
+@if (!cargando && dashboard) {
+  <section class="dashboard-container">
+
+    <h1>Dashboard Admin</h1>
+    <p class="subtitulo">Resumen general del ecommerce</p>
+
+    <div class="cards">
+
+      <div class="card">
+        <i class="bi bi-box-seam"></i>
+        <h3>Productos creados</h3>
+        <p>{{ dashboard.productosCreados }}</p>
+      </div>
+
+      <div class="card">
+        <i class="bi bi-pencil-square"></i>
+        <h3>Productos editados</h3>
+        <p>{{ dashboard.productosEditados }}</p>
+      </div>
+
+      <div class="card">
+        <i class="bi bi-trash"></i>
+        <h3>Productos eliminados</h3>
+        <p>{{ dashboard.productosEliminados }}</p>
+      </div>
+
+      <div class="card">
+        <i class="bi bi-check-circle"></i>
+        <h3>Productos aprobados</h3>
+        <p>{{ dashboard.productosAprobados }}</p>
+      </div>
+
+      <div class="card">
+        <i class="bi bi-x-circle"></i>
+        <h3>Productos rechazados</h3>
+        <p>{{ dashboard.productosRechazados }}</p>
+      </div>
+
+      <div class="card">
+        <i class="bi bi-receipt"></i>
+        <h3>Órdenes totales</h3>
+        <p>{{ dashboard.ordenesTotales }}</p>
+      </div>
+
+    </div>
+
+    <div class="resumen">
+      <h2>Resumen calculado</h2>
+
+      <p>Total movimientos productos: 
+        <strong>{{ totalMovimientosProductos() }}</strong>
+      </p>
+
+      <p>Productos activos calculados: 
+        <strong>{{ productosActivosCalculados() }}</strong>
+      </p>
+
+      <p>Aprobados: 
+        <strong>{{ porcentajeAprobados() }}%</strong>
+      </p>
+
+      <p>Rechazados: 
+        <strong>{{ porcentajeRechazados() }}%</strong>
+      </p>
+    </div>
+
+  </section>
+}

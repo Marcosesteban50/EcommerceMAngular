@@ -1,0 +1,46 @@
+<h2>Buscar Productos</h2>
+
+
+<form [formGroup]="form" class="formulario" data-aos="zoom-in" data-aos-duration="500">
+
+
+  <mat-form-field appearance="outline" data-aos="fade-left" data-aos-duration="1200">
+    <mat-label class="textos">Nombre</mat-label>
+    <input matInput class="inputs" [formControl]="form.controls.nombre">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" data-aos="fade-right" data-aos-duration="1200">
+    <mat-label class="textos" >Categorias</mat-label>
+    <mat-select class="inputs" [formControl]="form.controls.categoriaId">
+
+      <mat-option class="textos" [value]="''">Seleccione una Categoria</mat-option>
+
+      @for (categoria of categorias; track $index) {
+
+      <mat-option class="inputsCategorias" [value]="categoria.id">{{categoria.nombre}}</mat-option>
+      }
+
+    </mat-select>
+  </mat-form-field>
+
+
+  
+  <mat-form-field appearance="outline" class="campo ordenar-precio">
+    <mat-label class="textos">Ordenar por</mat-label>
+
+    <mat-select class="inputs" (selectionChange)="ordenarPrecio($event.value)">
+      <mat-option value="">Sin orden</mat-option>
+      <mat-option value="min">Precio menor</mat-option>
+      <mat-option value="max">Precio mayor</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+
+
+
+</form>
+
+
+<app-lista-productos [productos]="productos" data-aos="zoom-in" data-aos-duration="1200"></app-lista-productos>
+

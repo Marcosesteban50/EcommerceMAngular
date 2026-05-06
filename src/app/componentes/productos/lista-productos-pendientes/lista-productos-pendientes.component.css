@@ -1,0 +1,128 @@
+/* ================= CONTENEDOR ================= */
+.container {
+  max-width: 1200px;
+}
+
+/* ================= GRID ================= */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.producto-item {
+  flex: 1 1 calc(33.333% - 20px);
+  display: flex;
+}
+
+@media (max-width: 992px) {
+  .producto-item {
+    flex: 1 1 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 576px) {
+  .producto-item {
+    flex: 1 1 100%;
+  }
+}
+
+/* ================= TITULO ================= */
+h2 {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+h2::after {
+  content: "";
+  width: 60px;
+  height: 3px;
+  display: block;
+  margin: 8px auto 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+}
+
+/* ================= CARD ================= */
+.card {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+/* ================= IMAGEN ================= */
+.card-img-top {
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* ================= BODY ================= */
+.card-body {
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.card-title {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 14px;
+  min-height: 45px;
+}
+
+/* Precio */
+.fw-bold {
+  font-size: 18px;
+  color: #111827;
+}
+
+/* ================= BOTONES ================= */
+.card-actions {
+  display: flex;
+  gap: 10px;
+  padding: 15px 20px 20px;
+}
+
+.BTN-Editar {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #6366f1;
+  color: white;
+}
+
+.BTN-Editar:hover {
+  background: #4f46e5;
+  transform: translateY(-2px);
+}
+
+/* Botón rechazo */
+.BTN-Editar.rechazo {
+  background: #ef4444;
+}
+
+.BTN-Editar.rechazo:hover {
+  background: #dc2626;
+}

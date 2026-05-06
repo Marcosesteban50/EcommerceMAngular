@@ -1,0 +1,18 @@
+<h3>{{titulo}}</h3>
+
+<div>
+    <button type="button" mat-raised-button (click)="cargadorArchivos.click()">Seleccionar imagen</button>
+    <input type="file" hidden #cargadorArchivos accept="image/*" (change)="cambio($event)">
+</div>
+
+<div>
+    <!-- //Creando mandamos nueva imagen -->
+    @if(imagenBase64){
+        <img [src]="imagenBase64" width="120" height="200">
+    }
+    <!-- Editando seleccionamos la imagen que esta -->
+    @else if (urlImagenActual) {
+        <img [src]="urlImagenActual" width="120" height="200">
+
+    }
+</div>

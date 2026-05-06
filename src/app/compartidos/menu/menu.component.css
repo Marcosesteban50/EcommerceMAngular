@@ -1,0 +1,327 @@
+/* NAV GENERAL */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100vh;
+  background: #111827;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+  z-index: 1000;
+}
+
+nav.collapsed {
+  width: 70px;
+
+  /* EFECTO VIDRIO */
+  background: rgba(17, 24, 39, 0.6);
+  /* semi transparente */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  /* BORDE SUAVE */
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+
+  /* SOMBRA SUTIL */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  transition: 0.5s;
+}
+
+nav.collapsed a:hover {
+  background: rgba(34, 34, 34, 0);
+  backdrop-filter: blur(6px);
+}
+
+nav.collapsed .btn-logout {
+  color: #cbd5e1;
+}
+
+nav.collapsed .btn-logout:hover {
+  background: rgba(17, 24, 39, 0.6);
+  /* semi transparente */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  /* BORDE SUAVE */
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+
+  /* SOMBRA SUTIL */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ocultar email */
+nav.collapsed .email {
+  display: none;
+}
+
+/* ocultar texto logout */
+nav.collapsed .btn-logout span {
+  display: none;
+}
+
+/* centrar iconos */
+nav.collapsed .btn-logout {
+  justify-content: center;
+
+}
+
+/* centrar foto */
+nav.collapsed .user-info {
+  justify-content: center;
+}
+
+/* CONTENEDOR */
+.nav-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* OPCIONES */
+.opc-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* LINKS */
+nav a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 20px;
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+nav a:hover {
+  background: #1f2937;
+  color: white;
+}
+
+/* ICONOS */
+nav i {
+  font-size: 20px;
+  min-width: 20px;
+  text-align: center;
+  color: #ffff;
+}
+
+/* TEXTO */
+nav span {
+  transition: opacity 0.2s;
+}
+
+/* OCULTAR TEXTO EN COLAPSADO */
+nav.collapsed span {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* BOTÓN HAMBURGUESA */
+.toggle-btn {
+  cursor: pointer;
+  padding: 15px 20px;
+  color: #000;
+
+}
+
+.toggle-btn i {
+  font-size: 22px;
+  border-radius: 10px;
+  transition: 0.1s;
+}
+
+/* USUARIO */
+.user-container {
+  margin-bottom: 10px;
+}
+
+.contenedor-usuario {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+
+.foto-perfil {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* EMAIL */
+.email {
+  font-size: 12px;
+  color: #9ca3af;
+  word-break: break-all;
+}
+
+
+/*div foto-email*/
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* LOGOUT */
+.btn-logout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: none;
+  color: #b91c1c;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-logout:hover {
+  color: #b91c1c57;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+
+  /* NAV SE CONVIERTE EN HEADER */
+  nav {
+    width: 100%;
+    height: 60px;
+   
+    background: rgba(0, 0, 0, 0.5);
+    /* transparencia */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    /* soporte safari */
+    overflow: visible;
+    border: none;
+    box-shadow: none;
+    transition: background 0.3s ease;
+
+  }
+
+
+  nav.collapsed {
+    width: 100%;
+    height: 60px;
+    border: none;
+    box-shadow: none;
+    background: #000;
+
+
+  }
+
+
+  .toggle-btn {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+   
+    background: transparent;
+    z-index: 2100;
+  }
+
+  .toggle-btn i {
+    transform: translateY(-20%);
+    font-size: 32px;
+    padding: 0px 10px;
+    color: rgb(255, 255, 255);
+
+  }
+
+  .toggle-btn i:hover {
+    color: white;
+    border-radius: 5px;
+  }
+
+
+  .nav-container,
+  .opc-container {
+    height: auto;
+
+  }
+
+
+  .content-under-hamburguer {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 60px);
+
+    background: #000;
+    backdrop-filter: blur(30px);
+
+
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: transform 0.45s ease, opacity 0.35s ease;
+    z-index: 1900;
+  }
+
+
+
+  .content-under-hamburguer a {
+    border-bottom: 1px solid rgb(32, 38, 46);
+    justify-content: center;
+
+  }
+
+
+  nav.collapsed .content-under-hamburguer {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+
+  }
+
+  nav.collapsed a:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+
+  nav.collapsed span {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  nav.collapsed .email {
+    display: block;
+  }
+
+  nav.collapsed .btn-logout span {
+    display: inline;
+  }
+
+  .user-info,
+  .btn-logout {
+    justify-content: flex-start;
+  }
+
+  nav a {
+    width: 100%;
+    padding: 16px 24px;
+  }
+
+  .user-container {
+    margin-top: 20px;
+    padding-bottom: 12px;
+  }
+}

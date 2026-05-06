@@ -1,0 +1,11 @@
+<h2 class="text-center mb-4">Iniciar Sesión</h2>
+
+<!-- Tu formulario normal -->
+<app-formulario-autenticacion [errores]="errores" (posteoFormulario)="loguear($event)">
+</app-formulario-autenticacion>
+
+
+<!-- Botón de Google -->
+<div class="mb-4">
+  <app-google-login-button></app-google-login-button>
+</div>

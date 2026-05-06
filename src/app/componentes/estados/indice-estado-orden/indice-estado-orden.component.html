@@ -1,0 +1,8 @@
+<button class="BTN-Crear-Categoria" mat-flat-button routerLink="/estadosOrdenes/crear" data-aos="zoom-in" data-aos-duration="1200">Crear Estado</button>
+
+
+<div class="contenedor-imagenes" data-aos="fade-up" data-aos-duration="1200">
+
+    <app-lista-estado-orden [estadoOrdenesLista]="estadoOrdenes" (estadoOrdenBorrada)="borrarEstado($event)"></app-lista-estado-orden>
+
+</div>

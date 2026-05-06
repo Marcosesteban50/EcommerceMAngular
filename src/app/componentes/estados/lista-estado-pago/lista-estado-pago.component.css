@@ -1,0 +1,108 @@
+
+/* ================= CONTENEDOR ================= */
+.container {
+  max-width: 1100px;
+}
+
+/* ================= TITULO ================= */
+h2 {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 35px;
+  position: relative;
+}
+
+h2::after {
+  content: "";
+  width: 65px;
+  height: 3px;
+  display: block;
+  margin: 8px auto 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #2563eb);
+}
+
+/* ================= CARD ================= */
+.card {
+  border: none;
+  border-radius: 16px;
+  background: #ffffff;
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+/* ================= CARD BODY ================= */
+.card-body {
+  padding: 28px 20px;
+  text-align: center;
+}
+
+/* ================= NOMBRE ESTADO ================= */
+.card-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 22px;
+  position: relative;
+}
+
+/* Línea decorativa */
+.card-title::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 3px;
+  margin: 0 auto 10px;
+  border-radius: 2px;
+  background: #2563eb;
+}
+
+/* ================= BOTONES ================= */
+.card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Editar */
+.BTN-Editar {
+  border-radius: 8px ;
+  padding: 6px 16px ;
+  font-weight: 500 ;
+  background: #2563eb;
+  color: white ;
+  transition: all 0.2s ease;
+}
+
+.BTN-Editar:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* Borrar */
+.BTN-Borrar {
+  border-radius: 8px ;
+  padding: 6px 16px ;
+  font-weight: 500 ;
+  background: #ef4444 ;
+  color: white ;
+  transition: all 0.2s ease;
+}
+
+.BTN-Borrar:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+}
+
+/* ================= ESTADOS ================= */
+.text-center {
+  font-weight: 500;
+}
+
+.text-danger {
+  font-weight: 500;
+}

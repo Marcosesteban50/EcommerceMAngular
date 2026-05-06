@@ -1,0 +1,36 @@
+<div class="google-login-container">
+  <!-- Botón personalizado que activa el login de Google -->
+  <button class="google-btn" (click)="triggerGoogleLogin()" [disabled]="cargando">
+    <div class="google-btn-content">
+      <div class="google-icon-wrapper">
+        <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google logo">
+      </div>
+      <span class="google-btn-text">
+        @if (cargando) {
+          Iniciando sesión...
+        } @else {
+          Continuar con Google
+        }
+      </span>
+    </div>
+    
+    <!-- Spinner de carga -->
+    @if (cargando) {
+      <div class="spinner-container">
+        <div class="spinner"></div>
+      </div>
+    }
+  </button>
+  
+  <!-- Contenedor oculto para el botón oficial de Google -->
+  <div #googleButton class="google-official-btn"></div>
+  
+  <!-- Mensaje de error -->
+  @if (error) {
+    <div class="error-message">
+      <i class="error-icon">!</i>
+      <span>{{ error }}</span>
+      <button class="retry-btn" (click)="reintentar()">Reintentar</button>
+    </div>
+  }
+</div>

@@ -1,0 +1,30 @@
+<div class="perfil-container">
+  <h2>Mi Perfil</h2>
+
+  @if (perfil) {
+  <div class="perfil-item">
+    <span class="perfil-label">Nombre</span>
+    <span class="perfil-value">{{ perfil.nombreCompleto }}</span>
+  </div>
+
+  <div class="perfil-item">
+    <span class="perfil-label">Teléfono</span>
+    <span class="perfil-value">{{ perfil.telefono }}</span>
+  </div>
+
+  <div class="perfil-item">
+    <span class="perfil-label">Dirección</span>
+    <span class="perfil-value">{{ perfil.direccionEnvio }}</span>
+  </div>
+
+  <div class="perfil-item">
+    <span class="perfil-label">Email</span>
+    <span class="perfil-value">{{ perfil.email }}</span>
+  </div>
+  }
+</div>
+
+
+<button routerLink="/perfil/editar" class="BTN-Editar">
+  <span class="icon-edit"></span> Editar Perfil
+</button>

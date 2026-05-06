@@ -1,0 +1,30 @@
+/* ================= BOTON CREAR ESTADO ================= */
+.BTN-Crear-Categoria {
+  border-radius: 10px !important;
+  padding: 10px 22px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+  color: white !important;
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.25);
+  transition: all 0.25s ease;
+}
+
+/* Hover */
+.BTN-Crear-Categoria:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(99, 102, 241, 0.35);
+  filter: brightness(1.05);
+}
+
+/* Click effect */
+.BTN-Crear-Categoria:active {
+  transform: scale(0.97);
+}
+
+/* Opcional: centrar botón */
+.BTN-Crear-Categoria {
+  display: block;
+  margin: 0 auto 30px auto;
+}

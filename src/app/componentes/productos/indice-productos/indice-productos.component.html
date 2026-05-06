@@ -1,0 +1,17 @@
+<h2>Productos</h2>
+
+
+<app-autorizado rol="Admin">
+    <ng-container autorizado>
+        <button class="BTN-Crear-Categoria" mat-flat-button routerLink="/productos/crear" data-aos="zoom-in" data-aos-duration="1200">Crear
+            nuevo</button>
+    </ng-container>
+</app-autorizado>
+
+
+
+<div class="contenedor-imagenes" data-aos="fade-left" data-aos-duration="1200">
+
+    <app-lista-productos (productoBorrado)="borrarProducto($event)" [productos]="productos"></app-lista-productos>
+
+</div>

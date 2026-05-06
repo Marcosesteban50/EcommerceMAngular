@@ -1,0 +1,9 @@
+<h2>Editar {{categoria?.nombre}}</h2>
+
+
+@if(categoria){
+
+<app-formulario-categorias [modelo]="categoria" (posteoFormulario)="guardarCambios($event)"></app-formulario-categorias>
+}@else {
+<p>Cargando</p>
+}

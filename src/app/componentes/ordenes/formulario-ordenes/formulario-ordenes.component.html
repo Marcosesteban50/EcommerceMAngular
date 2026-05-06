@@ -1,0 +1,84 @@
+<form (submit)="guardarCambios()" [formGroup]="form">
+
+  <!-- DIRECCIÓN ENVÍO -->
+
+  <mat-form-field appearance="outline">
+    <mat-label>Direccion Envio</mat-label>
+    <input matInput [value]="modelo?.direccionEnvio" readonly>
+  </mat-form-field>
+
+
+  <!-- EMAIL -->
+  <mat-form-field appearance="outline">
+    <mat-label>Email Usuario</mat-label>
+    <input matInput [value]="modelo?.emailUsuario" readonly>
+  </mat-form-field>
+
+
+
+
+  <mat-form-field appearance="outline">
+    <mat-label>Estado Orden</mat-label>
+    <mat-select [formControl]="form.controls.estadoOrdenId">
+      @for (x of estadoOrdenDTO; track $index) {
+      <mat-option [value]="x.id">
+        {{ x.nombre }}
+      </mat-option>
+      }
+    </mat-select>
+    @if (form.controls.estadoOrdenId.hasError('required')) {
+    <mat-error>Debes seleccionar un estado</mat-error>
+    }
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline">
+    <mat-label>Estado Pago</mat-label>
+    <mat-select [formControl]="form.controls.estadoPagoId">
+      @for (x of estadoPagoDTO; track $index) {
+      <mat-option [value]="x.id">
+        {{ x.nombre }}
+      </mat-option>
+      }
+    </mat-select>
+    @if (form.controls.estadoPagoId.hasError('required')) {
+    <mat-error>Debes seleccionar un estado</mat-error>
+    }
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+    Guardar cambios
+  </button>
+  <a mat-stroked-button routerLink="/admin/ordenes">Cancelar</a>
+
+
+</form>
+
+@if (modelo?.items?.length) {
+
+<h3>Productos de la orden</h3>
+
+<table class="tabla-items">
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th>Precio Unitario</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (item of modelo!.items; track item.productoId) {
+    <tr>
+      <td>{{ item.nombreProducto }}</td>
+      <td>{{ item.cantidad }}</td>
+      <td>{{ item.precioUnitario | currency:'DOP' }}</td>
+      <td>{{ item.cantidad * item.precioUnitario | currency:'DOP' }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+<h4>Total: {{ modelo!.total | currency:'DOP' }}</h4>
+}

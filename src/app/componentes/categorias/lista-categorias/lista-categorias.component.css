@@ -1,0 +1,68 @@
+/* Contenedor general */
+.container {
+    max-width: 1200px;
+}
+
+/* Card */
+.card {
+    border: none;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    border: 1px solid #3f51b5;
+    color: black;
+    text-align: center;
+}
+
+/* Hover elegante */
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+/* Título */
+.card-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Acciones */
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Botón Editar */
+.BTN-Editar {
+    flex: 1;
+    border-radius: 8px;
+    font-weight: 500;
+    background: #3f51b5;
+    color: white;
+    transition: 0.2s ease;
+}
+
+.BTN-Editar:hover {
+    background: #5c6bc0;
+}
+
+/* Botón Borrar */
+.BTN-Borrar {
+    flex: 1;
+    border-radius: 8px;
+    font-weight: 500;
+    background: #e53935;
+    color: white;
+    transition: 0.2s ease;
+}
+
+.BTN-Borrar:hover {
+    background: #ff5252;
+}
+
+/* Texto de carga */
+.text-center {
+    font-size: 1.1rem;
+    font-weight: 500;
+}

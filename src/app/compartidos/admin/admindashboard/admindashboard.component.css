@@ -1,0 +1,60 @@
+.dashboard-container {
+  padding: 30px;
+}
+
+.dashboard-container h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.subtitulo {
+  color: #6b7280;
+  margin-bottom: 25px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card i {
+  font-size: 32px;
+  color: #2563eb;
+}
+
+.card h3 {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #374151;
+}
+
+.card p {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.resumen {
+  margin-top: 30px;
+  background: #f9fafb;
+  padding: 25px;
+  border-radius: 18px;
+}
+
+.resumen h2 {
+  margin-bottom: 15px;
+}

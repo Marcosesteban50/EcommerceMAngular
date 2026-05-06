@@ -1,0 +1,9 @@
+<h2>Editando Perfil {{perfil?.nombreCompleto}}</h2>
+
+
+@if(perfil){
+
+<app-formulario-perfil [modelo]="perfil" (posteoFormulario)="guardarCambios($event)"></app-formulario-perfil>
+}@else {
+<p>Cargando</p>
+}

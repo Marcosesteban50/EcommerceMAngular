@@ -1,0 +1,9 @@
+<h2>Editar {{estadoPago?.nombre}}</h2>
+
+
+@if(estadoPago){
+
+<app-formulario-estado-pago [modelo]="estadoPago" (posteoFormulario)="guardarCambios($event)"></app-formulario-estado-pago>
+}@else {
+<p>Cargando</p>
+}

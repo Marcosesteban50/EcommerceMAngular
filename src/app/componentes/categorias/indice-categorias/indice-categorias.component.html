@@ -1,0 +1,11 @@
+<h2>Categorias</h2>
+<button class="BTN-Crear-Categoria" mat-flat-button routerLink="/categorias/crear" data-aos="zoom-in"
+    data-aos-duration="1200">Crear Categoria</button>
+
+
+<div class="contenedor-imagenes" data-aos="fade-up" data-aos-duration="1200">
+
+    <app-lista-categorias [categoriasLista]="categorias"
+        (categoriaBorrada)="borrarCategoria($event)"></app-lista-categorias>
+
+</div>

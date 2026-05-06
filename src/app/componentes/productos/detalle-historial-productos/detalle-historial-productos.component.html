@@ -1,0 +1,71 @@
+<div class="container mt-4">
+
+    @if (historial) {
+
+    <h2 class="text-center mb-4">
+        📜 Detalle de Historial del Producto
+    </h2>
+
+    <div class="card shadow p-4 historial-detalle">
+
+        <!-- Acción y fecha -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="mb-0">
+                <strong>{{ historial.accion }}</strong>
+            </h4>
+
+            <span class="text-muted">
+                {{ historial.fechaCreacion | date:'medium' }}
+            </span>
+        </div>
+
+        <!-- Usuario -->
+        <p>
+            <strong>Usuario:</strong> {{ historial.usuarioNombre }}
+        </p>
+
+        <!-- Producto -->
+        <p>
+            <strong>ID Producto:</strong> {{ historial.productoId }}
+        </p>
+
+        <!-- Categoría -->
+        @if (historial.categoriaId) {
+        <p>
+            <strong>Categoría ID:</strong> {{ historial.categoriaId }}
+        </p>
+        }
+
+
+
+        <hr>
+
+        <!-- DATOS ANTES -->
+        @if (historial.datosAntes) {
+        <h5 class="text-danger">Antes</h5>
+
+        <pre class="bg-light p-3 rounded">
+          {{ historial.datosAntes }}
+        </pre>
+        }
+
+        <!-- DATOS DESPUÉS -->
+        @if (historial.datosDespues) {
+        <h5 class="text-success">Después</h5>
+
+        <pre class="bg-light p-3 rounded">
+{{ historial.datosDespues }}
+        </pre>
+        }
+
+    </div>
+
+    } @else {
+
+    <div class="alert alert-info text-center">
+        Cargando historial...
+    </div>
+
+    }
+
+</div>

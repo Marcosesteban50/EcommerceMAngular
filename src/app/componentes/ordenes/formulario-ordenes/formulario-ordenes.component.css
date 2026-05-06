@@ -1,0 +1,95 @@
+/* Contenedor general */
+form {
+  max-width: 700px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Campos Material ocupan todo el ancho */
+mat-form-field {
+  width: 100%;
+}
+
+/* Botones */
+button[mat-raised-button] {
+  margin-top: 10px;
+}
+
+a[mat-stroked-button] {
+  margin-left: 10px;
+}
+
+/* Agrupar botones */
+form > button,
+form > a {
+  display: inline-block;
+}
+
+/* Sección productos */
+h3 {
+  margin-top: 30px;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Tabla */
+.tabla-items {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 14px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Encabezado */
+.tabla-items thead {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.tabla-items th {
+  padding: 12px;
+  text-align: left;
+}
+
+/* Filas */
+.tabla-items td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Hover filas */
+.tabla-items tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* Total */
+h4 {
+  text-align: right;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  form {
+    padding: 10px;
+  }
+
+  .tabla-items th,
+  .tabla-items td {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  h4 {
+    text-align: center;
+  }
+}

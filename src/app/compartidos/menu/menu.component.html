@@ -1,0 +1,145 @@
+<nav [class.collapsed]="menuColapsado">
+
+  <div class="nav-container">
+
+    <!-- TOP -->
+    <div class="opc-container">
+
+      <!-- BOTÓN HAMBURGUESA -->
+      <div class="toggle-btn" (click)="toggleMenu()">
+        <i class="bi bi-list i-btn-toggle"></i>
+      </div>
+
+      <div class="content-under-hamburguer">
+
+
+
+        <a routerLink="" (click)="cerrarMenu()">
+          <i class="bi bi-box-seam"></i>
+          <span>Ecommerce</span>
+        </a>
+
+        <app-autorizado rol="Admin">
+          <ng-container autorizado>
+
+            <a routerLink="/productos" (click)="cerrarMenu()">
+              <i class="bi bi-boxes"></i>
+              <span>Productos</span>
+            </a>
+
+            <a routerLink="/categorias" (click)="cerrarMenu()">
+              <i class="bi bi-tags"></i>
+              <span>Categorías</span>
+            </a>
+
+            <a routerLink="/listadoUsuarios" (click)="cerrarMenu()">
+              <i class="bi bi-people"></i>
+              <span>Usuarios</span>
+            </a>
+
+            <a routerLink="/productos/pendientes" (click)="cerrarMenu()">
+              <i class="bi bi-hourglass-split"></i>
+              <span>Pendientes</span>
+            </a>
+
+            <a routerLink="/productos/historialProductos" (click)="cerrarMenu()">
+              <i class="bi bi-clock-history"></i>
+              <span>Historial</span>
+            </a>
+
+            <a routerLink="/admin/ordenes" (click)="cerrarMenu()">
+              <i class="bi bi-receipt"></i>
+              <span>Órdenes</span>
+            </a>
+
+            <a routerLink="/estadosOrdenes" (click)="cerrarMenu()">
+              <i class="bi bi-diagram-3"></i>
+              <span>Estados Órdenes</span>
+            </a>
+
+            <a routerLink="/estadosPagos" (click)="cerrarMenu()">
+              <i class="bi bi-credit-card"></i>
+              <span>Estados Pagos</span>
+            </a>
+
+             <a routerLink="/admin/dashboard" (click)="cerrarMenu()">
+              <i class="bi bi-credit-card"></i>
+              <span>Dashboard</span>
+            </a>
+
+          </ng-container>
+        </app-autorizado>
+
+        <a routerLink="/productos/filtrar" (click)="cerrarMenu()">
+          <i class="bi bi-search"></i>
+          <span>Busqueda</span>
+        </a>
+
+        <a routerLink="/carrito" (click)="cerrarMenu()">
+          <i class="bi bi-cart3"></i>
+          <span>Carrito</span>
+        </a>
+
+        <a routerLink="/perfil" (click)="cerrarMenu()">
+          <i class="bi bi-person-circle"></i>
+          <span>Perfil</span>
+        </a>
+
+
+
+        <!-- BOTTOM -->
+        <div class="user-container">
+
+          <app-autorizado>
+
+            <ng-container autorizado>
+
+              <div class="contenedor-usuario">
+
+                <div class="user-info">
+
+                  @if (obtenerFotoPerfil()) { <img [src]="obtenerFotoPerfil()" alt="Foto de perfil" class="foto-perfil"
+                    referrerpolicy="no-referrer" /> }
+                  @else { <img src="/fotos-ecommerce/User.jpg" alt="Foto de perfil" class="foto-perfil"
+                    referrerpolicy="no-referrer" /> }
+
+                  <span class="email">
+                    {{ seguridadService.obtenerCampoJWT('email') }}
+                  </span>
+                </div>
+
+                <button (click)="seguridadService.logout()" (click)="cerrarMenu()" class="btn-logout">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <span>Logout</span>
+                </button>
+
+              </div>
+
+            </ng-container>
+
+            <ng-container noAutorizado>
+              <div class="contenedor-login-registro">
+
+                <a routerLink="login" (click)="cerrarMenu()">
+                  <i class="bi bi-box-arrow-in-right iconLR"></i>
+                  <span>Login</span>
+                </a>
+
+                <a routerLink="registrar" (click)="cerrarMenu()">
+                  <i class="bi bi-person-plus iconLR"></i>
+                  <span>Registrar</span>
+                </a>
+
+              </div>
+            </ng-container>
+
+          </app-autorizado>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</nav>
+
+<app-ia></app-ia>

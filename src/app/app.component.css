@@ -1,0 +1,49 @@
+.layout {
+  min-height: 100vh;
+}
+
+/* CONTENIDO */
+.main-content {
+  margin-left: 240px;
+  margin-top: 40px;
+  padding: 40px;
+  transition: margin-left 0.3s ease;
+}
+
+/* CUANDO EL MENÚ ESTÁ COLAPSADO */
+nav.collapsed ~ .layout .main-content {
+  margin-left: 70px;
+}
+
+@media (max-width: 768px) {
+  nav {
+    transform: translateX(-100%);
+  }
+
+  nav.collapsed {
+    transform: translateX(0);
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+  }
+
+  nav.collapsed ~ body::after {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+}

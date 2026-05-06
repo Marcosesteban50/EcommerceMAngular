@@ -1,0 +1,132 @@
+:host {
+  display: block;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 35px 20px;
+}
+
+/* TÍTULO */
+h2 {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 800;
+  margin-bottom: 25px;
+  color: #111827;
+}
+
+/* FORMULARIO */
+.formulario {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 18px;
+  align-items: center;
+
+  padding: 22px;
+  margin-bottom: 35px;
+  border-radius: 26px;
+
+  background: linear-gradient(135deg, #111827, #1e1b4b);
+  box-shadow: 0 18px 45px rgba(17, 24, 39, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.formulario:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 25px 55px rgba(17, 24, 39, 0.3);
+}
+
+/* CAMPOS */
+mat-form-field,
+.campo {
+  width: 100%;
+}
+
+/* CLASES TUYAS */
+.textos {
+  color: white !important;
+}
+
+.inputs {
+  color: white !important;
+}
+
+.inputsCategorias {
+  color: black !important;
+}
+
+/* ANGULAR MATERIAL */
+::ng-deep .formulario .mat-mdc-text-field-wrapper {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+}
+
+::ng-deep .formulario .mdc-notched-outline__leading,
+::ng-deep .formulario .mdc-notched-outline__notch,
+::ng-deep .formulario .mdc-notched-outline__trailing {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+::ng-deep .formulario .mat-mdc-form-field-label,
+::ng-deep .formulario .mdc-floating-label {
+  color: #e5e7eb !important;
+}
+
+::ng-deep .formulario input,
+::ng-deep .formulario .mat-mdc-select-value {
+  color: white !important;
+}
+
+::ng-deep .formulario input::placeholder {
+  color: #cbd5e1 !important;
+}
+
+::ng-deep .formulario .mat-mdc-select-arrow {
+  color: white !important;
+}
+
+/* FOCUS */
+::ng-deep .formulario .mdc-text-field--focused .mdc-notched-outline__leading,
+::ng-deep .formulario .mdc-text-field--focused .mdc-notched-outline__notch,
+::ng-deep .formulario .mdc-text-field--focused .mdc-notched-outline__trailing {
+  border-color: #60a5fa !important;
+  border-width: 2px !important;
+}
+
+/* OPTIONS DEL SELECT */
+::ng-deep .mat-mdc-option {
+  color: #111827 !important;
+}
+
+/* TABLET */
+@media (max-width: 1000px) {
+  .formulario {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ordenar-precio {
+    grid-column: 1 / -1;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  :host {
+    padding: 25px 14px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  .formulario {
+    grid-template-columns: 1fr;
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .ordenar-precio {
+    grid-column: auto;
+  }
+}

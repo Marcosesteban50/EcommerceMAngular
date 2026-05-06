@@ -1,0 +1,59 @@
+<app-listado-generico [listado]="productos">
+
+  <ng-container contenido>
+
+    <div class="container mt-4">
+
+
+
+
+
+      <div class="row">
+        @for (producto of productos; track producto.id) {
+
+        <div class="producto-item">
+          <div class="card h-100 shadow-sm">
+
+
+            <a [routerLink]="'/productos/' + producto.id">
+              <img [src]="producto.imagenUrl" class="card-img-top" alt="{{ producto.nombre }}">
+            </a>
+
+            <div class="card-body">
+              <a [routerLink]="'/productos/' + producto.id" class="product-link">
+                <h5 class="card-title">{{ producto.nombre }}</h5>
+              </a>
+
+              <p class="fw-bold">{{ producto.precio | currency }}</p>
+
+
+            </div>
+
+            <app-autorizado rol="Admin">
+              <ng-container autorizado>
+                <div class="card-actions">
+                  <button [routerLink]="'/productos/editar/' + producto.id" class="BTN-Editar">
+                    <span class="icon-edit"><i class="bi bi-pencil-square"></i></span> Editar
+                  </button>
+
+                  <button (click)="borrar(producto.id)" class="BTN-Borrar">
+                    <span><i class="bi bi-trash-fill"></i></span> Borrar
+                  </button>
+                </div>
+              </ng-container>
+            </app-autorizado>
+
+            <button (click)="agregarAlCarrito(producto.id)" class="BTN-agregar">
+              <span class="cart-icon"><i class="bi bi-cart4"></i></span> Agregar al carrito
+            </button>
+
+          </div>
+        </div>
+
+        }
+      </div>
+    </div>
+
+  </ng-container>
+
+</app-listado-generico>

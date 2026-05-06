@@ -1,0 +1,40 @@
+<app-listado-generico [listado]="categoriasLista">
+  <ng-container contenido>
+
+    <div class="container mt-4">
+     
+
+      @if (cargando) {
+      <div class="text-center">Cargando Categorias...</div>
+      } @else if (error) {
+      <div class="text-danger text-center">{{ error }}</div>
+      } @else {
+      <div class="row">
+        @for (categoria of categoriasLista; track $index) {
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+
+            <div class="card-body">
+              <h5 class="card-title">{{$index + 1}}) {{ categoria.nombre }}</h5>
+
+              <div class="card-actions">
+                <button mat-flat-button routerLink="/categorias/editar/{{categoria.id}}" class="BTN-Editar">
+
+                  Editar
+                </button>
+                <button mat-flat-button (click)="borrar(categoria.id)" class="BTN-Borrar">
+
+                  Borrar
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        }
+      </div>
+      }
+    </div>
+
+  </ng-container>
+</app-listado-generico>

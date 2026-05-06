@@ -1,0 +1,115 @@
+<div class="container mt-4">
+
+  <!-- ================= ADMIN ================= -->
+
+  <h2 class="text-center mb-4">Usuarios Admin</h2>
+
+  @if (cargando) {
+  <div class="text-center">Cargando Usuarios...</div>
+  }
+  @else if (error) {
+  <div class="text-danger text-center">{{ error }}</div>
+  }
+  @else {
+  <div class="row">
+    @for (x of usuariosAdmin; track $index) {
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+
+          <h5 class="card-title admin-email">{{$index + 1}}) {{ x.email }}</h5>
+
+          <div class="card-actions mb-2">
+            <button class="hacer" mat-flat-button  (click)="hacerAdmin(x.email)">
+              Hacer Admin
+            </button>
+            <button class="remover" mat-flat-button (click)="removerAdmin(x.email)">
+              Remover Admin
+            </button>
+          </div>
+
+          <div class="card-actions">
+            <button class="hacer" mat-flat-button (click)="hacerVendedor(x.email)">
+              Hacer Vendedor
+            </button>
+            <button class="remover" mat-flat-button (click)="removerVendedor(x.email)">
+              Remover Vendedor
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  }
+  
+
+  <!-- ================= VENDEDORES ================= -->
+  <h2 class="text-center mb-4">Usuarios Vendedores</h2>
+
+  <div class="row">
+    @for (x of usuariosVendedor; track $index) {
+      
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title vendedor-email">{{$index + 1}}) {{ x.email }}</h5>
+
+          <div class="card-actions mb-2">
+            <button class="hacer" mat-flat-button (click)="hacerAdmin(x.email)">
+              Hacer Admin
+            </button>
+            <button class="remover" mat-flat-button (click)="removerAdmin(x.email)">
+              Remover Admin
+            </button>
+          </div>
+
+          <div class="card-actions">
+            <button class="hacer" mat-flat-button (click)="hacerVendedor(x.email)">
+              Hacer Vendedor
+            </button>
+            <button class="remover" mat-flat-button (click)="removerVendedor(x.email)">
+              Remover Vendedor
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+
+  <!-- ================= CLIENTES ================= -->
+  <h2 class="text-center mb-4">Usuarios Clientes</h2>
+
+  <div class="row">
+    @for (x of usuariosCliente; track $index) {
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title cliente-email">{{$index + 1}}) {{ x.email }}</h5>
+
+          <div class="card-actions mb-2">
+            <button class="hacer" mat-flat-button (click)="hacerAdmin(x.email)">
+              Hacer Admin
+            </button>
+            <button class="remover" mat-flat-button (click)="removerAdmin(x.email)">
+              Remover Admin
+            </button>
+          </div>
+
+          <div class="card-actions">
+            <button class="hacer" mat-flat-button (click)="hacerVendedor(x.email)">
+              Hacer Vendedor
+            </button>
+            <button class="remover" mat-flat-button (click)="removerVendedor(x.email)">
+              Remover Vendedor
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+
+</div>

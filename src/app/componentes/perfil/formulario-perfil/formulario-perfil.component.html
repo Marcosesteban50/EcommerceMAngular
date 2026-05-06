@@ -1,0 +1,32 @@
+<form (submit)="guardarCambios()" [formGroup]="form">
+
+  <mat-form-field appearance="outline">
+    <mat-label>Nombre</mat-label>
+    <input matInput [formControl]="form.controls. nombreCompleto">
+    <mat-error></mat-error>
+  </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+    <mat-label>Telefono</mat-label>
+    <input matInput [formControl]="form.controls.telefono">
+    <mat-error></mat-error>
+  </mat-form-field>
+
+    <mat-form-field appearance="outline">
+    <mat-label>Direccion</mat-label>
+    <input matInput [formControl]="form.controls.direccionEnvio">
+    <mat-error></mat-error>
+  </mat-form-field>
+
+
+
+
+
+  <div class="contenedor-botones">
+    <button type="submit" mat-stroked-button [disabled]="form.invalid">Guardar Cambios</button>
+    <a mat-stroked-button routerLink="/perfil">Cancelar</a>
+  </div>
+
+
+</form>

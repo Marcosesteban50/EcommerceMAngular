@@ -1,0 +1,65 @@
+<div class="container mt-4">
+
+  @if (producto) {
+
+  <h2 class="text-center mb-4">{{producto.nombre}}</h2>
+  <div class="card shadow p-3">
+
+
+    <div>
+      <img [src]="producto.imagenUrl" class="card-img-top" alt="{{ producto.nombre }}">
+    </div>
+
+
+    <h3>{{ producto.nombre }}</h3>
+
+    @if (producto.descripcion) {
+    <p class="text-muted">{{ producto.descripcion }}</p>
+    } @else {
+    <p class="text-muted fst-italic">Sin descripción</p>
+    }
+
+
+    <p><strong>Precio:</strong> ${{ producto.precio }}</p>
+
+    <p><strong>Stock:</strong> {{ producto.stock }}</p>
+
+    @if (categorias) {
+
+    <p><strong>Categorías:</strong></p>
+
+    <ul class="ul-detalle-producto">
+      <li>{{ categorias.nombre }}</li>
+    </ul>
+
+
+    } @else {
+    <p class="fst-italic">No tiene categorías asignadas</p>
+    }
+
+
+    <label for="cantidad">Cantidad:</label>
+    <input id="cantidad" type="number" min="1" [(ngModel)]="cantidad" class="input-cantidad">
+
+    @if(producto.stock> 0){
+
+    <button (click)="agregarAlCarrito(producto.id)" class="btn-agregar">
+      Agregar al carrito
+    </button>
+    }@else {
+    <p class="text-danger fw-bold">No disponible actualmente</p>
+    }
+
+
+
+  </div>
+
+  } @else {
+
+  <div class="alert alert-info text-center">
+    Cargando producto...
+  </div>
+
+  }
+
+</div>
