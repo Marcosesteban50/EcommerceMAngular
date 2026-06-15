@@ -15,7 +15,7 @@
           <div class="card h-100 shadow-sm">
 
 
-            <a [routerLink]="'/productos/' + producto.id">
+            <a class="image-container" [routerLink]="'/productos/' + producto.id">
               <img [src]="producto.imagenUrl" class="card-img-top" alt="{{ producto.nombre }}">
             </a>
 
@@ -33,11 +33,11 @@
               <ng-container autorizado>
                 <div class="card-actions">
                   <button [routerLink]="'/productos/editar/' + producto.id" class="BTN-Editar">
-                    <span class="icon-edit"><i class="bi bi-pencil-square"></i></span> Editar
+                    <span class="icon-edit"><i class="bi bi-pencil-square"></i></span> 
                   </button>
 
                   <button (click)="borrar(producto.id)" class="BTN-Borrar">
-                    <span><i class="bi bi-trash-fill"></i></span> Borrar
+                    <span><i class="bi bi-trash-fill"></i></span> 
                   </button>
                 </div>
               </ng-container>

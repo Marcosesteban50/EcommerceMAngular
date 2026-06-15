@@ -1,20 +1,22 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CredencialesUsuarioDTO } from '../seguridad';
-import {  RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 
+
 @Component({
   selector: 'app-formulario-autenticacion',
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatButtonModule, MatInputModule],
+  imports: [RouterLink, ReactiveFormsModule, MatFormFieldModule, MatButtonModule, MatInputModule, RouterLink],
   templateUrl: './formulario-autenticacion.component.html',
   styleUrl: './formulario-autenticacion.component.css'
 })
 export class FormularioAutenticacionComponent {
 
   private formBuilder = inject(FormBuilder);
+
 
   form = this.formBuilder.group({
     email: ['', { validators: [Validators.required, Validators.email] }],
@@ -23,7 +25,7 @@ export class FormularioAutenticacionComponent {
   })
 
 
-  
+
 
 
   @Input()

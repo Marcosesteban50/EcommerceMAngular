@@ -1,7 +1,7 @@
 import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatFormField, MatFormFieldModule, MatLabel } from "@angular/material/form-field";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Aos from 'aos';
 import { debounceTime } from 'rxjs';
 import { CategoriaDTO } from '../../../modelos/CategoriaModelos/Categoria';
@@ -14,11 +14,12 @@ import { ListaProductosComponent } from "../lista-productos/lista-productos.comp
 import { MatInputModule } from '@angular/material/input';
 import { MatOption, MatSelectModule } from "@angular/material/select";
 import { MatIconModule } from "@angular/material/icon";
+import { MatSlideToggle } from "@angular/material/slide-toggle";
 
 
 @Component({
   selector: 'app-filtro-producto-landing',
-  imports: [MatLabel, MatFormFieldModule, ReactiveFormsModule, ListaProductosComponent, MatInputModule, MatSelectModule, MatIconModule],
+  imports: [MatFormFieldModule, ReactiveFormsModule, ListaProductosComponent, MatInputModule, MatSelectModule, MatIconModule],
   templateUrl: './filtro-producto-landing.component.html',
   styleUrl: './filtro-producto-landing.component.css'
 })
@@ -40,6 +41,7 @@ export class FiltroProductoLandingComponent implements OnInit {
       this.categorias = categorias;
 
       this.leerValoresURL();
+
       this.buscarProductos(this.form.value as FiltroProductosNombre);
 
       //Productos
@@ -49,6 +51,7 @@ export class FiltroProductoLandingComponent implements OnInit {
         )
 
           .subscribe(v => {
+            console.log('CAMBIÓ', v);
             this.buscarProductos(v as FiltroProductosNombre);
             this.escribirParametrosBusquedaEnURL(v as FiltroProductosNombre)
             console.log(v)
@@ -57,16 +60,15 @@ export class FiltroProductoLandingComponent implements OnInit {
 
     });
 
-
-
-
-
-
   }
+
+
+
 
 
   private location = inject(Location);
   private activatedRoute = inject(ActivatedRoute);
+  private router = inject(Router);
   private formBuilder = inject(FormBuilder);
   @Output()
   productosFiltrados = new EventEmitter<ProductoDTO[]>();
@@ -76,6 +78,41 @@ export class FiltroProductoLandingComponent implements OnInit {
   categorias: CategoriaDTO[] = []
   categoriaServicio = inject(CategoriaService);
   error: string | null = null;
+  ordenDescendente = false;
+
+
+
+  form = this.formBuilder.group({
+    nombre: [''],
+    categoriaId: [''],
+    precioMin: [0],
+    precioMax: [3000],
+
+  });
+
+
+  //Asi se crean variables
+  get precioMin(): number {
+    return this.form.controls.precioMin.value ?? 0;
+  }
+
+  get precioMax(): number {
+    return this.form.controls.precioMax.value ?? 0;
+  }
+
+  onPrecioChange() {
+
+    const precioMin = this.form.controls.precioMin.value;
+    const precioMax = this.form.controls.precioMax.value;
+
+    this.router.navigate(['/productos/filtrar'], {
+      queryParams: {
+        precioMin: precioMin || null,
+        precioMax: precioMax || null
+      }
+    });
+
+  }
 
 
 
@@ -97,28 +134,7 @@ export class FiltroProductoLandingComponent implements OnInit {
 
   }
 
-  ordenarPrecio(tipo: string) {
-    if (tipo === 'min') {
-      this.ordenarPrecioMin();
-    } else if (tipo === 'max') {
-      this.ordenarPrecioMax();
-    }
-  }
 
-
-  ordenarPrecioMin() {
-    this.form.patchValue({
-      precioMinBoolean: true,
-      precioMaxBoolean: false
-    });
-  }
-
-  ordenarPrecioMax() {
-    this.form.patchValue({
-      precioMinBoolean: false,
-      precioMaxBoolean: true
-    });
-  }
 
   escribirParametrosBusquedaEnURL(valores: FiltroProductosNombre) {
     let queryStrings = [];
@@ -169,12 +185,6 @@ export class FiltroProductoLandingComponent implements OnInit {
     })
   }
 
-  form = this.formBuilder.group({
-    nombre: [''],
-    categoriaId: [''],
-    precioMinBoolean: [false],
-    precioMaxBoolean: [false]
-  });
 
 
 

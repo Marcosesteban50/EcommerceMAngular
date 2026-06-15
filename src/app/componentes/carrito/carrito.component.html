@@ -1,12 +1,12 @@
 <div class="container mt-4">
 
 
-@if(obtenerNombreUsuario() !== ''){
+  @if(obtenerNombreUsuario() !== ''){
 
   <h2> {{obtenerNombreUsuario()}}'s Carrito</h2>
-}@else {
+  }@else {
   <h2>Hola, Registrate 😊</h2>
-}
+  }
 
 
   @if (carrito.length === 0) {
@@ -26,15 +26,22 @@
 
     <div class="cantidad-controles">
 
-      @if (p.cantidad === 1) {
+
+      @if(p.cantidad == 1){
+
       <button class="btn-delete" (click)="eliminar(p.productoId)">x</button>
       <span>{{ p.cantidad }}</span>
+
       <button class="btn-plus" (click)="sumar(p.productoId)">+</button>
       }@else {
+
       <button class="btn-less" (click)="restar(p.productoId)">-</button>
       <span>{{ p.cantidad }}</span>
       <button class="btn-plus" (click)="sumar(p.productoId)">+</button>
+
       }
+
+
 
     </div>
   </div>

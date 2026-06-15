@@ -4,7 +4,7 @@ import { MenuComponent } from "./compartidos/menu/menu.component";
 
 @Component({
   selector: 'app-root',
-  imports: [ MenuComponent,RouterOutlet],
+  imports: [RouterOutlet, MenuComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -1,0 +1,41 @@
+/* Contenedor cuando no hay datos */
+.estado-vacio {
+  min-height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 15px;
+  text-align: center;
+}
+
+/* Gif de carga */
+.estado-vacio img,
+.loading-gif {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Mensaje */
+.estado-vacio p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #000000;
+  margin: 0;
+}
+
+/* Tarjeta vacía */
+.empty-card {
+  background: rgb(245, 207, 207);
+  padding: 25px 35px;
+  border-radius: 20px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08);
+
+  animation: aparecer .4s ease;
+}
+

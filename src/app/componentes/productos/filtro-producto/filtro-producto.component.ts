@@ -13,12 +13,14 @@ import { ListaProductosComponent } from "../lista-productos/lista-productos.comp
 import { FiltroProductos } from '../../../modelos/ProductoModelos/FiltroProductos';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import Aos from 'aos';
 import { debounceTime } from 'rxjs';
+import { MenuComponent } from "../../../compartidos/menu/menu.component";
 
 @Component({
   selector: 'app-filtro-producto',
-  imports: [MatButtonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatSelectModule, MatCheckboxModule, ListaProductosComponent],
+  imports: [MatSlideToggleModule, MatButtonModule, MatFormFieldModule, ReactiveFormsModule, MatInputModule, MatSelectModule, MatCheckboxModule, ListaProductosComponent],
   templateUrl: './filtro-producto.component.html',
   styleUrl: './filtro-producto.component.css'
 })
@@ -27,7 +29,7 @@ export class FiltroProductoComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    this.leerValoresURL();
 
     Aos.init({
       duration: 1000,
@@ -35,43 +37,18 @@ export class FiltroProductoComponent implements OnInit {
     })
 
 
-    //Categorias
-    this.categoriaServicio.obtenerTodos().subscribe(categorias => {
-      this.categorias = categorias;
-
-      this.leerValoresURL();
-      this.buscarProductos(this.form.value as FiltroProductos);
-
-      //Productos
-      this.productoServicio.obtenerTodos().subscribe(x => {
-        this.form.valueChanges.pipe(
-          debounceTime(300)
-        )
-
-          .subscribe(v => {
-            this.buscarProductos(v as FiltroProductos);
-            this.escribirParametrosBusquedaEnURL(v as FiltroProductos)
-            console.log(v)
-          })
-      })
-
-      //Si El valor es null o '',ponemos 0 por default en precioMin
-      this.form.controls.precioMin.valueChanges.subscribe(x => {
-        if (x === null) {
-          this.form.controls.precioMin.setValue(0, { emitEvent: false })
-        }
-      });
-
-      //Si El valor es null o '',ponemos 0 por default en precioMax
-      this.form.controls.precioMax.valueChanges.subscribe(x => {
-        if (x === null) {
-          this.form.controls.precioMax.setValue(0, { emitEvent: false })
-        }
-      });
+    this.buscarProductos(this.form.value as FiltroProductos);
 
 
+    this.form.valueChanges.pipe(debounceTime(300)).subscribe(x => {
+      this.buscarProductos(x as FiltroProductos);
 
+      this.escribirParametrosBusquedaEnURL(x as FiltroProductos);
     });
+
+    this.buscarProductos(this.form.value as FiltroProductos);
+
+
 
   }
 
@@ -84,8 +61,7 @@ export class FiltroProductoComponent implements OnInit {
 
   productos: ProductoDTO[] = []
   productoServicio = inject(ProductoService);
-  categorias: CategoriaDTO[] = []
-  categoriaServicio = inject(CategoriaService);
+
   error: string | null = null;
 
 
@@ -108,8 +84,20 @@ export class FiltroProductoComponent implements OnInit {
 
   }
 
+  
+
+
+  //Asi se crean variables
+  get precioMin(): number {
+    return this.form.controls.precioMin.value ?? 0;
+  }
+
+  get precioMax(): number {
+    return this.form.controls.precioMax.value ?? 0;
+  }
 
   escribirParametrosBusquedaEnURL(valores: FiltroProductos) {
+
     let queryStrings = [];
 
     if (valores.nombre) {
@@ -120,44 +108,61 @@ export class FiltroProductoComponent implements OnInit {
       queryStrings.push(`categoriaId=${encodeURIComponent(valores.categoriaId)}`);
     }
 
-
-    if (valores.precioMin > 0) {
-      queryStrings.push(`PrecioMin=${valores.precioMin}`);
+    if (valores.precioMin) {
+      queryStrings.push(`precioMin=${valores.precioMin}`);
     }
 
-    if (valores.precioMax > 0) {
-      queryStrings.push(`PrecioMax=${valores.precioMax}`);
+    if (valores.precioMax) {
+      queryStrings.push(`precioMax=${valores.precioMax}`);
     }
 
-
-
-    this.location.replaceState('productos/filtrar', queryStrings.join('&'))
+    this.location.replaceState(
+      'productos/filtrar',
+      queryStrings.join('&')
+    );
   }
-
 
 
   leerValoresURL() {
     this.activatedRoute.queryParamMap.subscribe((params: any) => {
 
+      //reseteamos para cuando demos click an opcion todos se muestren todos
+      this.form.reset({
+        nombre: '',
+        categoriaId: '',
+        precioMin: 0,
+        precioMax: 0
+      });
+
       var objeto: any = {};
 
-      if (params.nombre) {
-        objeto.nombre = params.nombre;
+      const nombre = params.get('nombre');
+      const categoriaId = params.get('categoriaId');
+      const precioMin = params.get('precioMin');
+      const precioMax = params.get('precioMax');
+
+      if (nombre) {
+        objeto.nombre = nombre;
       }
 
-      if (params.categoriaId) {
-        objeto.categoriaId = params.categoriaId
+      if (categoriaId) {
+        objeto.categoriaId = categoriaId;
       }
-      if (params.precioMin) {
-        objeto.precioMin = Number(params.precioMin);
+      if (precioMin) {
+        objeto.precioMin = Number(precioMin);
       }
 
-      if (params.precioMax) {
-        objeto.precioMax = Number(params.precioMax);
+      if (precioMax) {
+        objeto.precioMax = Number(precioMax);
       }
 
 
       this.form.patchValue(objeto);
+
+      console.log('Formulario cargado:', this.form.value);
+
+
+      this.buscarProductos(this.form.value as FiltroProductos);
     })
   }
 
@@ -165,7 +170,7 @@ export class FiltroProductoComponent implements OnInit {
     nombre: [''],
     categoriaId: [''],
     precioMin: [0],
-    precioMax: [0]
+    precioMax: [3000]
   });
 
 

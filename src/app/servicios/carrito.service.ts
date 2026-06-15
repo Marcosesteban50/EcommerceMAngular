@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { CarritoDTO } from '../modelos/CarritoModelos/CarritoDTO';
-import { IServicioCRUD } from '../interfaces/iServicioCrud';
 import { SeguridadService } from '../seguridad/seguridad.service';
 import { of } from 'rxjs';
 

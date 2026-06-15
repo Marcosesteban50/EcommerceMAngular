@@ -60,7 +60,7 @@ export class DetalleProductoComponent implements OnInit{
           icon: 'success',
           title: `Agregado (${this.cantidad}) al carrito`,
           toast: true,
-          position: 'top-end',
+          position: 'bottom-end',
           timer: 1500,
           showConfirmButton: false
         });

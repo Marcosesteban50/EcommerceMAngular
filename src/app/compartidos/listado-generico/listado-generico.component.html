@@ -1,21 +1,35 @@
 @if(!listado){
-<img src="Loading.gif" />
+
+<div class="estado-vacio">
+    <img src="Loading.gif" class="loading-gif" />
+    <p>Cargando información...</p>
+</div>
+
 }
 
 @else if(listado.length === 0){
-<div #vacio>
-    <ng-content select="[vacio]"></ng-content>
 
-    @if(vacio.innerHTML.trim()){
-    <div>
-        <p>No hay elementos para mostrar</p>
+<div class="estado-vacio">
+
+    <div class="empty-card">
+
+        <div #vacio>
+            <ng-content select="[vacio]"></ng-content>
+
+            @if(vacio.innerHTML.trim()){
+            <p>No hay elementos para mostrar</p>
+            }
+
+        </div>
+
     </div>
-    }
 
 </div>
+
 }
 
 @else {
+
 <ng-content select="[contenido]"></ng-content>
 
 }
