@@ -15,31 +15,39 @@
 
   @for (p of carrito; track $index) {
   <div class="carrito-item">
+
+    <!-- <p>{{p | json}}</p> -->
+
     <img [src]="p.imagenUrl" class="carrito-img">
 
     <div class="carrito-info">
-      <h4>{{ p.nombreProducto }}</h4>
+      <h4>{{ p.nombre }}</h4>
       <small>Cantidad: {{ p.cantidad }}</small>
-      <b>Subtotal: RD$ {{ p.subtotal | currency}}</b>
+      <b>{{ p.subtotal | currency}}</b>
     </div>
 
 
     <div class="cantidad-controles">
 
 
-      @if(p.cantidad == 1){
+
 
       <button class="btn-delete" (click)="eliminar(p.productoId)">x</button>
       <span>{{ p.cantidad }}</span>
 
       <button class="btn-plus" (click)="sumar(p.productoId)">+</button>
-      }@else {
 
+
+      @if(p.cantidad == 1){
+      <button class="btn-less" (click)="restar(p.productoId)" disabled>-</button>
+      }@else {
       <button class="btn-less" (click)="restar(p.productoId)">-</button>
-      <span>{{ p.cantidad }}</span>
-      <button class="btn-plus" (click)="sumar(p.productoId)">+</button>
 
       }
+
+
+
+
 
 
 
@@ -49,7 +57,7 @@
 
   @if (carrito.length > 0) {
   <div class="carrito-total">
-    <h3>Total: RD$ {{ total | currency}}</h3>
+    <h3>Total: {{ total | currency}}</h3>
     <button class="btn-vaciar" (click)="limpiar()">Vaciar carrito</button>
     <button class="btn-comprar" (click)="checkout()">Finalizar Compra</button>
   </div>

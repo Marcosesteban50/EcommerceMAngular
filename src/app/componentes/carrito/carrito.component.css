@@ -107,9 +107,20 @@ h2::after {
   transform: scale(1.05);
 }
 
+.btn-less:disabled{
+  background: #6b72804d;
+}
+
 /* - */
 .btn-less {
   background: #f59e0b;
+}
+
+.btn-less:hover:disabled{
+  background: #6b72804d;
+  transform: scale(1);
+  cursor: default;
+
 }
 
 .btn-less:hover {
@@ -174,4 +185,97 @@ h2::after {
 .btn-comprar:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+}
+
+
+
+
+
+/* ================= RESPONSIVE MOVIL ================= */
+@media (max-width: 768px) {
+
+  .container {
+    padding: 0 15px;
+  }
+
+  .carrito-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .carrito-img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .carrito-info {
+    width: 100%;
+  }
+
+  .carrito-info h4 {
+    font-size: 15px;
+  }
+
+  .carrito-info small,
+  .carrito-info b {
+    font-size: 13px;
+  }
+
+  .cantidad-controles {
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .btn-plus,
+  .btn-less,
+  .btn-delete {
+    width: 38px;
+    height: 38px;
+  }
+
+  .carrito-total {
+    padding: 20px 15px;
+  }
+
+  .carrito-total h3 {
+    font-size: 18px;
+  }
+
+  .btn-vaciar,
+  .btn-comprar {
+    width: 100%;
+    margin: 8px 0;
+  }
+}
+
+/* Extra pequeño (móviles estrechos) */
+@media (max-width: 480px) {
+
+  h2 {
+    font-size: 22px;
+  }
+
+  .carrito-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .carrito-item {
+    gap: 15px;
+  }
+
+  .cantidad-controles {
+    gap: 8px;
+  }
+
+  .btn-plus,
+  .btn-less,
+  .btn-delete {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
 }

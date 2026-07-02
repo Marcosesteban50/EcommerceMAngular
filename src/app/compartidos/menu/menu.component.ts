@@ -27,7 +27,7 @@ import { MatSliderModule } from '@angular/material/slider';
     AutorizadoComponent,
     IaComponent,
     MatSliderModule
-],
+  ],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.css'
 })
@@ -48,16 +48,19 @@ export class MenuComponent implements OnInit {
   formBusqueda = this.formBuilder.group({
     nombre: [''],
     categoriaId: [''],
-    precioMin:[0],
-    precioMax:[0]
+    precioMin: [0],
+    precioMax: [0]
   });
 
   ngOnInit(): void {
     this.cargarCategorias();
 
-    this.obtenerCarritoLocal();
 
+    this.carritoServicio.cantidadCarrito$.subscribe(x => {
+      this.cantidadCarrito = x;
+    });
 
+    this.carritoServicio.actualizarCantidad();
 
 
 
@@ -65,6 +68,19 @@ export class MenuComponent implements OnInit {
 
   obtenerFotoPerfil(): string {
     return this.seguridadService.obtenerFotoUsuario();
+  }
+
+
+  actualizarCarritoMenu() {
+
+    var logeado = this.seguridadService.estaLogueado();
+
+    if (logeado) {
+      this.carritoServicio.actualizarCantidad();
+    }
+
+
+    return;
   }
 
 
@@ -125,7 +141,7 @@ export class MenuComponent implements OnInit {
       queryParams: {
 
         categoriaId: categoriaId || null,
-        nombre:nombre || null
+        nombre: nombre || null
       }
     });
 

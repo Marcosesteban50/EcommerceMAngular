@@ -47,8 +47,8 @@ export const routes: Routes = [
   { path: 'productos/pendientes', component: IndiceProductosPendientesComponent, canActivate: [esAdminGuard] },
   { path: 'productos/filtrar', component: FiltroProductoComponent },
   { path: 'productos/filtrarLanding', component: FiltroProductoComponent },
-  { path: 'productos/historialProductos', component: HistorialProductosComponent },
-  { path: 'productos/:id/historial', component: DetalleHistorialProductosComponent },
+  { path: 'productos/historialProductos', component: HistorialProductosComponent,canActivate: [esAdminGuard] },
+  { path: 'productos/:id/historial', component: DetalleHistorialProductosComponent,canActivate: [esAdminGuard] },
 
 
 
@@ -63,7 +63,7 @@ export const routes: Routes = [
 
   { path: 'login', component: LoginComponent },
   { path: 'registrar', component: RegistroComponent },
-  { path: 'listadoUsuarios', component: ListaUsuariosComponent },
+  { path: 'listadoUsuarios', component: ListaUsuariosComponent ,canActivate: [esAdminGuard]},
   { path: 'carrito', component: CarritoComponent },
 
 

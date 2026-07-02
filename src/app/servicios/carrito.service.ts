@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { CarritoDTO } from '../modelos/CarritoModelos/CarritoDTO';
+import { CarritoDTO, CarritoItemDTO } from '../modelos/CarritoModelos/CarritoDTO';
 import { SeguridadService } from '../seguridad/seguridad.service';
-import { of } from 'rxjs';
+import { BehaviorSubject, of, tap } from 'rxjs';
 
 
 @Injectable({
@@ -16,8 +16,26 @@ export class CarritoService {
   private apiURL = environment.apiURL + '/Carrito';
   private seguridad = inject(SeguridadService);
 
-  private storageKey = 'carritoInvitado';
 
+  private storageKey = 'carritoInvitado';
+  private cantidadCarritoSource = new BehaviorSubject<number>(0);
+
+  cantidadCarrito$ = this.cantidadCarritoSource.asObservable();
+
+  actualizarCantidad() {
+
+    if (this.seguridad.estaLogueado()) {
+      this.obtenerCarrito().subscribe(x => {
+        this.cantidadCarritoSource.next(x.items.length);
+      });
+
+      return;
+    }
+
+    const carrito = this.obtenerCarritoLocal().items;
+
+    this.cantidadCarritoSource.next(carrito.length);
+  }
 
 
   private obtenerCarritoLocal() {
@@ -47,7 +65,27 @@ export class CarritoService {
       return this.http.get<CarritoDTO>(this.apiURL);
     }
 
-    return of(this.obtenerCarritoLocal());
+
+
+    const carrito = this.obtenerCarritoLocal();
+
+    //Mapeamos de carritoLocal a CarritoDTO para traer propiedades
+    const carritoTransformado: CarritoDTO = {
+      id: '',
+      total: carrito.total,
+      items: carrito.items.map((item: any) => ({
+        productoId: item.productoId,
+        nombre: item.nombre,
+        precio: item.precio,
+        cantidad: item.cantidad,
+        subtotal: item.precio * item.cantidad,
+        imagenUrl: item.imagenUrl
+      }))
+    };
+
+
+    //of devuelve observable
+    return of(carritoTransformado);
 
   }
 
@@ -56,7 +94,11 @@ export class CarritoService {
 
 
     if (this.seguridad.estaLogueado()) {
-      return this.http.post(this.apiURL + '/AgregarItem', dto);
+
+      return this.http.post(this.apiURL + '/AgregarItem', dto).pipe(tap(() => {
+        this.actualizarCantidad();
+      }));
+
     }
 
 
@@ -74,13 +116,15 @@ export class CarritoService {
         productoId: dto.productoId,
         nombre: dto.nombre,
         precio: dto.precio,
-        imagen: dto.imagen,
+        imagenUrl: dto.imagen,
         cantidad: dto.cantidad
       });
     }
 
 
     this.guardarCarritoLocal(carrito);
+
+    this.actualizarCantidad();
 
     return of({ ok: true })
   }
@@ -91,7 +135,11 @@ export class CarritoService {
 
     if (this.seguridad.estaLogueado()) {
 
-      return this.http.delete(this.apiURL + `/Eliminar/${productoId}`);
+
+
+      return this.http.delete(this.apiURL + `/Eliminar/${productoId}`).pipe(tap(() => {
+        this.actualizarCantidad();
+      }));
     }
 
     let carrito = this.obtenerCarritoLocal().items;
@@ -99,6 +147,8 @@ export class CarritoService {
     carrito = carrito.filter((x: any) => x.productoId !== productoId);
 
     this.guardarCarritoLocal(carrito);
+    this.actualizarCantidad();
+
 
     return of({ ok: true });
 
@@ -108,7 +158,12 @@ export class CarritoService {
 
     if (this.seguridad.estaLogueado()) {
 
-      return this.http.delete(`${this.apiURL}/EliminarUno/${productoId}`);
+
+
+      return this.http.delete(`${this.apiURL}/EliminarUno/${productoId}`)
+        .pipe(tap(() => {
+          this.actualizarCantidad();
+        }));
     }
 
     let carrito = this.obtenerCarritoLocal().items;
@@ -125,6 +180,9 @@ export class CarritoService {
 
     this.guardarCarritoLocal(carrito);
 
+    this.actualizarCantidad();
+
+
     return of({ ok: true });
 
   }
@@ -134,11 +192,17 @@ export class CarritoService {
   vaciarCarrito() {
 
     if (this.seguridad.estaLogueado()) {
-      return this.http.delete(this.apiURL + '/Vaciar');
+
+      return this.http.delete(this.apiURL + '/Vaciar').pipe(tap(() => {
+        this.actualizarCantidad();
+      }));
 
     }
 
     localStorage.removeItem(this.storageKey);
+
+    this.actualizarCantidad();
+
 
     return of({ ok: true })
 

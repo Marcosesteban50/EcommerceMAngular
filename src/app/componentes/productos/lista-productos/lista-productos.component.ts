@@ -41,12 +41,12 @@ export class ListaProductosComponent {
     return this.seguridadService.estaLogueado();
   }
 
-  agregarAlCarrito(id: string) {
+  agregarAlCarrito(producto: any) {
 
 
 
 
-    this.carritoService.agregarItem({ productoId: id, cantidad: 1 }).subscribe({
+    this.carritoService.agregarItem({ productoId: producto.id, cantidad: 1 ,nombre:producto.nombre,precio:producto.precio,imagen:producto.imagenUrl}).subscribe({
       next: () => {
 
         const Toast = Swal.mixin({

@@ -3,7 +3,7 @@ import { CarritoService } from '../../servicios/carrito.service';
 
 import Swal from 'sweetalert2';
 import { SeguridadService } from '../../seguridad/seguridad.service';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, JsonPipe } from '@angular/common';
 import { OrdenService } from '../../servicios/orden.service';
 import { Router } from '@angular/router';
 import { PerfilUsuario } from '../../modelos/PerfilModelos/PerfilUsuario';
@@ -20,6 +20,8 @@ export class CarritoComponent implements OnInit {
   carrito: any[] = [];
   total: number = 0;
   perfilUsuario!: PerfilUsuario;
+
+  
 
   carritoServicio = inject(CarritoService);
   ordenesServicio = inject(OrdenService);
