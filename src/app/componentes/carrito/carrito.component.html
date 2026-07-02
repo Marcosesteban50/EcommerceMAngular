@@ -5,7 +5,7 @@
 
   <h2> {{obtenerNombreUsuario()}}'s Carrito</h2>
   }@else {
-  <h2>Hola, Registrate 😊</h2>
+  <h2>Carrito de Compras</h2>
   }
 
 
@@ -18,24 +18,21 @@
 
     <!-- <p>{{p | json}}</p> -->
 
+    <button class="btn-delete" (click)="eliminar(p.productoId)"><i class="bi bi-trash"></i></button>
+
     <img [src]="p.imagenUrl" class="carrito-img">
 
     <div class="carrito-info">
       <h4>{{ p.nombre }}</h4>
-      <small>Cantidad: {{ p.cantidad }}</small>
+      <small>Cantidad: <strong>{{ p.cantidad }}</strong></small>
       <b>{{ p.subtotal | currency}}</b>
     </div>
-
 
     <div class="cantidad-controles">
 
 
 
 
-      <button class="btn-delete" (click)="eliminar(p.productoId)">x</button>
-      <span>{{ p.cantidad }}</span>
-
-      <button class="btn-plus" (click)="sumar(p.productoId)">+</button>
 
 
       @if(p.cantidad == 1){
@@ -45,13 +42,12 @@
 
       }
 
-
-
-
-
-
-
+      <span>{{ p.cantidad }}</span>
+      <button class="btn-plus" (click)="sumar(p.productoId)">+</button>
     </div>
+
+
+
   </div>
   }
 

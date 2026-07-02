@@ -51,7 +51,7 @@ h2::after {
 
 /* ================= INFO ================= */
 .carrito-info {
-  flex: 1;
+  margin-right: auto;
 }
 
 .carrito-info h4 {
@@ -75,6 +75,7 @@ h2::after {
   display: flex;
   align-items: center;
   gap: 10px;
+
 }
 
 .cantidad-controles span {
@@ -131,6 +132,7 @@ h2::after {
 /* delete */
 .btn-delete {
   background: #ef4444;
+  margin-bottom: auto;
 }
 
 .btn-delete:hover {
@@ -212,6 +214,7 @@ h2::after {
 
   .carrito-info {
     width: 100%;
+    
   }
 
   .carrito-info h4 {
