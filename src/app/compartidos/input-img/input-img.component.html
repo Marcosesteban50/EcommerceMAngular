@@ -1,26 +1,58 @@
 <h3>{{ titulo }}</h3>
 
 <div>
-    <button type="button" mat-raised-button (click)="cargadorArchivos.click()">
+    <button type="button" class="btn-subir-imagen" (click)="cargadorArchivos.click()">
 
-        Seleccionar imágenes
+        <i class="bi bi-image"></i>
     </button>
+
+
+    <button type="button" class="btn-borrar-todo" (click)="eliminarTodasImagenes()">
+        <i class="bi bi-trash"></i>
+    </button>
+
 
     <input type="file" multiple hidden #cargadorArchivos accept="image/*" (change)="cambio($event)">
 </div>
 
-<div class="preview-container">
 
-    @for(imagen of imagenesBase64; track $index){
+<!-- IMÁGENES NUEVAS -->
+<div class="imagenes-preview">
 
-    <img [src]="imagen" class="preview-imagen">
+    @for (imagen of imagenesBase64; track $index) {
 
-    }
+    <div class="preview">
 
-    @if(imagenesBase64.length === 0 && urlImagenesActuales){
+        <img [src]="imagen" [alt]="'Imagen ' + ($index + 1)">
 
-    <img [src]="urlImagenesActuales" class="preview-imagen">
+        <button type="button" class="btn-eliminar" (click)="eliminarImagen($index)">
+            ×
+        </button>
+
+    </div>
 
     }
 
 </div>
+
+
+<!-- IMÁGENES QUE YA EXISTÍAN AL EDITAR -->
+@if (urlImagenesActuales?.length) {
+
+<div class="imagenes-preview actuales">
+
+    @for (imagen of urlImagenesActuales; track $index) {
+
+    <div class="preview">
+
+        <img [src]="imagen" [alt]="'Imagen actual ' + ($index + 1)">
+
+    </div>
+
+    }
+
+</div>
+
+
+
+}

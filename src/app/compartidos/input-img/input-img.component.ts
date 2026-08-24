@@ -23,7 +23,11 @@ export class InputImgComponent {
   archivoSeleccionado = new EventEmitter<File[]>();
 
 
-  //Imagen Convertida de Bites a Representacion en string
+  //Imagen que enviamos en archivo hacia el backend
+  archivosSeleccionados: File[] = [];
+
+
+  //Imagen Convertida de Bites a Representacion en string para enviar al frontend
   imagenesBase64: string[] = [];
 
 
@@ -38,12 +42,18 @@ export class InputImgComponent {
       return;
     }
 
-    const archivos = Array.from(input.files);
+    const nuevosArchivos = Array.from(input.files);
 
-    this.imagenesBase64 = [];
-    for (const archivo of archivos) {
+
+    //con ... enviamos los elementos del array , no el array en si
+    this.archivosSeleccionados.push(...nuevosArchivos);
+
+
+
+
+    for (const x of nuevosArchivos) {
       try {
-        const base64 = await toBase64(archivo);
+        const base64 = await toBase64(x);
 
         this.imagenesBase64.push(base64);
       }
@@ -53,10 +63,44 @@ export class InputImgComponent {
     }
 
 
-    console.log('Archivos Seleccionados',archivos);
+    console.log('Archivos Seleccionados', this.archivosSeleccionados);
+
+    // Mandamos TODAS al componente padre
+    this.archivoSeleccionado.emit(this.archivosSeleccionados);
+
+    // Permite seleccionar nuevamente incluso el mismo archivo
+    input.value = '';
+  }
 
 
-    this.archivoSeleccionado.emit(archivos);
+
+  eliminarTodasImagenes() {
+
+
+    this.archivosSeleccionados = [];
+    this.imagenesBase64 = [];
+
+    //enviamos lista actualizada
+    this.archivoSeleccionado.emit(
+      this.archivosSeleccionados
+    );
+  }
+
+
+  eliminarImagen(index: number) {
+
+
+    //Eliminamos la foto seleccionada que enviamos al backend ej:perro.jpg
+    this.archivosSeleccionados.splice(index, 1);
+
+
+    //Eliminamos la foto seleccionada para mostrar en la pagina 
+    this.imagenesBase64.splice(index, 1);
+
+    //enviamos lista actualizada
+    this.archivoSeleccionado.emit(
+      this.archivosSeleccionados
+    );
   }
 
 }

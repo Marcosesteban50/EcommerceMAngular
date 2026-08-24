@@ -65,7 +65,7 @@ export const routes: Routes = [
 
   { path: 'login', component: LoginComponent },
   { path: 'registrar', component: RegistroComponent },
-  { path: 'listadoUsuarios', component: ListaUsuariosComponent ,canActivate: [esAdminGuard]},
+  { path: 'listadoUsuarios', component: ListaUsuariosComponent},
   { path: 'carrito', component: CarritoComponent },
   { path: 'favoritos', component: FavoritoComponent },
   { path: 'contacto', component: ContactoComponent },

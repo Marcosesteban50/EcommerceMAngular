@@ -20,7 +20,7 @@
 
     <button class="btn-delete" (click)="eliminar(p.productoId)"><i class="bi bi-trash"></i></button>
 
-    <img [src]="p.imagenUrl" class="carrito-img">
+    <img [src]="p.imagenes?.[0]" class="carrito-img">
 
     <div class="carrito-info">
       <h4>{{ p.nombreProducto }}</h4>

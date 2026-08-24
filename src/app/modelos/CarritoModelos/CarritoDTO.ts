@@ -10,5 +10,5 @@ export interface CarritoItemDTO {
   precio: number;
   cantidad: number;
   subtotal: number;
-  imagenUrl: string; //Esto puede dar problemas
+  imagenes: string[]; //Esto puede dar problemas
 }

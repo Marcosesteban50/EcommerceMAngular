@@ -9,7 +9,7 @@ export interface FavoritoItemDTO {
   nombre: string;
   precio: number;
   subtotal:number;
-  imagenUrl: string; //Esto puede dar problemas
+  imagenes: string[]; //Esto puede dar problemas
 }
 
 

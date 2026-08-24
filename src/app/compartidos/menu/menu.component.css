@@ -1,9 +1,5 @@
-/* =========================================
-   GENERAL
-========================================= */
-
 * {
-  box-sizing: border-box;
+  box-sizing: border-box
 }
 
 nav {
@@ -11,206 +7,137 @@ nav {
   position: sticky;
   top: 0;
   z-index: 55000;
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none
 }
-
-
-/* =========================================
-   TOP BAR
-========================================= */
 
 .top-bar {
   height: 40px;
   padding: 0 30px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   background: #f5f5f5;
   border-bottom: 1px solid #e5e5e5;
-
   color: #555;
-  font-size: 13px;
+  font-size: 13px
 }
 
 .top-links {
   display: flex;
-  gap: 20px;
+  gap: 20px
 }
 
 .top-links a {
   color: #444;
-  cursor: pointer;
+  cursor: pointer
 }
-
-
-/* =========================================
-   HEADER
-========================================= */
 
 .header-principal {
   height: 90px;
   padding: 0 35px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 30px;
-
   background: #fff;
-  border-bottom: 1px solid #ececec;
+  border-bottom: 1px solid #ececec
 }
-
-
-/* =========================================
-   LOGO
-========================================= */
 
 .logo {
   min-width: 220px;
-
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 12px
 }
 
 .logo i {
   color: #2c87ff;
-  font-size: 42px;
+  font-size: 42px
 }
 
 .logo h2 {
   margin: 0;
-
   color: #111;
-
   font-size: 32px;
   font-weight: 800;
-  line-height: 1;
+  line-height: 1
 }
 
 .logo span {
   color: #2c87ff;
-
   font-weight: 700;
-  text-transform: uppercase;
+  text-transform: uppercase
 }
-
-
-/* =========================================
-   HAMBURGUESA
-========================================= */
 
 .hamburguer-btn-mobile {
   display: none;
-
   padding: 8px;
-
   background: transparent;
-  border: none;
-
+  border: 0;
   color: #111;
-
   font-size: 30px;
-
-  cursor: pointer;
-
-  transition: .25s;
+  cursor: pointer
 }
-
-.hamburguer-btn-mobile:hover {
-  color: #2c87ff;
-}
-
-
-/* =========================================
-   BUSCADOR
-========================================= */
 
 .search-container-form {
   flex: 1;
-  max-width: 850px;
+  max-width: 850px
 }
 
 .search-container {
   height: 55px;
-
   display: flex;
-
   overflow: hidden;
-
   background: #c3ddff;
-
   border: 2px solid #ececec;
-  border-radius: 12px;
+  border-radius: 12px
 }
 
 .search-category {
   width: 100px;
-
   padding: 0 15px;
-
   background: #fafafa;
-
-  border: none;
+  border: 0;
   border-right: 1px solid #ececec;
-
-  outline: none;
-
+  outline: 0;
   font-weight: 600;
-
-  cursor: pointer;
+  cursor: pointer
 }
 
 .search-container input {
   flex: 1;
-
   padding: 0 20px;
-
   background: #f0f7ff;
-
-  border: none;
-
-  outline: none;
-
-  font-size: 15px;
+  border: 0;
+  outline: 0;
+  font-size: 15px
 }
 
 .search-container button {
   width: 65px;
-
   background: #2c87ff;
-
-  border: none;
-
-  cursor: pointer;
-
-  transition: .25s;
-}
-
-.search-container button:hover {
-  background: #0046a1;
+  border: 0;
+  cursor: pointer
 }
 
 .search-container button i {
   color: #000;
-  font-size: 24px;
+  font-size: 24px
 }
 
-
-/* =========================================
-   ACCIONES HEADER
-========================================= */
+.acciones-header,
+.user-info-header,
+.login-registro-header {
+  display: flex;
+  align-items: center
+}
 
 .acciones-header {
-  display: flex;
-  align-items: center;
-  gap: 25px;
+  gap: 25px
 }
 
 .acciones-header a,
@@ -219,138 +146,79 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
-
-  color: #111;
-
-  transition: .25s;
+  color: #111
 }
 
 .acciones-header i {
-  font-size: 24px;
+  font-size: 24px
 }
 
 .acciones-header small,
 .user-link small {
   display: block;
-
   color: #666;
-
-  font-size: 12px;
+  font-size: 12px
 }
 
 .acciones-header span,
 .user-link span {
-  font-weight: 600;
+  font-weight: 600
 }
 
+.user-info-header {
+  gap: 8px
+}
 
-/* =========================================
-   USUARIO
-========================================= */
-
-.user-info-header,
 .login-registro-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.user-link:hover,
-.login-registro-header a:hover {
-  color: #2c87ff;
+  gap: 12px
 }
 
 .foto-perfil-header {
   width: 40px;
   height: 40px;
-
   object-fit: cover;
-
   border: 2px solid #2c87ff;
   border-radius: 50%;
-
-  flex-shrink: 0;
+  flex-shrink: 0
 }
 
 .btn-logout-header {
   padding: 4px 8px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: transparent;
-
-  border: none;
+  border: 0;
   border-radius: 8px;
-
   color: #666;
-
   font-size: 18px;
-
-  cursor: pointer;
-
-  transition: .25s;
-}
-
-.btn-logout-header:hover {
-  color: #ef4444;
-
-  background: rgba(239, 68, 68, .08);
-
-  transform: scale(1.05);
-}
-
-.login-registro-header {
-  gap: 12px;
+  cursor: pointer
 }
 
 .login-registro-header small {
   display: block;
-
   color: #666;
-
-  font-size: 10px;
+  font-size: 10px
 }
 
 .login-registro-header span {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 600
 }
 
 .login-registro-header i {
-  font-size: 22px;
+  font-size: 22px
 }
-
-
-/* =========================================
-   CARRITO / FAVORITOS
-========================================= */
 
 .carrito-icono,
 .favorito-icono {
-  position: relative;
+  position: relative
 }
 
 .favoritos-link,
 .carrito-link {
   padding: 5px;
-
-  border-radius: 10px;
-
-  transition: .25s;
-}
-
-.favoritos-link:hover {
-  background: rgba(239, 68, 68, .17);
-
-  transform: scale(1.05);
-}
-
-.carrito-link:hover {
-  background: rgba(74, 120, 248, .17);
-
-  transform: scale(1.05);
+  border-radius: 10px
 }
 
 .badge-favorito,
@@ -358,787 +226,491 @@ a {
   position: absolute;
   top: -8px;
   right: -10px;
-
   min-width: 20px;
   height: 20px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  display: grid;
+  place-items: center;
   border-radius: 50%;
-
   color: #000;
-
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 700
 }
 
 .badge-favorito {
-  background: #ff8888;
+  background: #ff8888
 }
 
 .badge-carrito {
-  background: #2c87ff;
+  background: #2c87ff
 }
-
-
-/* =========================================
-   MENU PRINCIPAL
-========================================= */
 
 .menu-principal {
   height: 65px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background: #202020;
+  background: #202020
 }
 
 .menu-principal i {
   color: #c3ddff;
-  font-size: 22px;
+  font-size: 22px
 }
 
 .btn-categorias {
   width: 5%;
   height: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  display: grid;
+  place-items: center;
   background: #2c87ff;
-
   color: #fff;
-
   font-weight: 800;
-
-  cursor: pointer;
+  cursor: pointer
 }
 
 .menu-links {
   display: flex;
   align-items: center;
-
   gap: 40px;
-
-  padding: 0 30px;
+  padding: 0 30px
 }
 
 .menu-links a {
   position: relative;
-
   height: 100%;
-
   padding: 15px 25px;
-
   display: flex;
   align-items: center;
   gap: 10px;
-
   color: #fff;
-
   font-size: 14px;
-  font-weight: 700;
-
-  transition: .25s;
+  font-weight: 700
 }
 
 .menu-links a:hover {
   color: #2c87ff;
-
-  background: #3b3b3b;
+  background: #3b3b3b
 }
 
-.menu-links a.activo::after {
+.menu-links a.activo:after {
   content: "";
-
   position: absolute;
   bottom: -1px;
   left: 0;
-
   width: 100%;
   height: 4px;
-
-  background: #2c87ff;
+  background: #2c87ff
 }
-
-
-/* =========================================
-   ADMIN
-========================================= */
 
 .admin-bar {
   width: 100%;
-
   padding: 0 35px;
-
   display: flex;
-
   gap: 15px;
-
   background: #202020;
-
-  border-bottom: 1px solid rgba(255, 255, 255, .05);
+  border-bottom: 1px solid #ffffff0d
 }
 
 .dropdown-menu-admin {
-  position: relative;
+  position: relative
 }
 
 .dropdown-btn {
   min-width: 140px;
-
   padding: 17px 25px;
-
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-
   background: transparent;
-
-  border: none;
-
+  border: 0;
   color: #fff;
-
   font-size: 14px;
   font-weight: 600;
-
-  cursor: pointer;
-
-  transition: .25s;
+  cursor: pointer
 }
 
 .dropdown-btn:hover,
 .dropdown-menu-admin.active .dropdown-btn {
-  background: rgba(44, 135, 255, .15);
-
-  color: #2c87ff;
+  background: #2c87ff26;
+  color: #2c87ff
 }
 
 .dropdown-btn i {
   color: #fff;
-
-  font-size: 18px;
-
-  transition: .25s;
+  font-size: 18px
 }
 
 .dropdown-btn:hover i,
 .dropdown-menu-admin.active .dropdown-btn i {
-  color: #2c87ff;
+  color: #2c87ff
 }
 
 .dropdown-btn i:last-child {
-  margin-left: 4px;
-
-  transition: transform .25s;
+  margin-left: 4px
 }
 
 .dropdown-btn i:last-child.rotated {
-  transform: rotate(180deg);
+  transform: rotate(180deg)
 }
-
-
-/* =========================================
-   DROPDOWN
-========================================= */
 
 .dropdown-content {
   position: absolute;
-
   top: calc(100% + 8px);
   left: 0;
-
   min-width: 230px;
-
   display: none;
-
   overflow: hidden;
-
   background: #202020;
-
-  border: 1px solid rgba(255, 255, 255, .06);
+  border: 1px solid #ffffff0f;
   border-radius: 12px;
-
-  box-shadow: 0 10px 30px rgba(0, 0, 0, .5);
-
-  z-index: 1000;
+  box-shadow: 0 10px 30px #0008;
+  z-index: 1000
 }
 
 .dropdown-content.open {
-  display: block;
+  display: block
 }
 
 .dropdown-content a {
   padding: 12px 16px;
-
   display: flex;
   align-items: center;
   gap: 10px;
-
   color: #fff;
-
   font-size: 14px;
-  font-weight: 500;
-
-  transition: .2s;
+  font-weight: 500
 }
 
 .dropdown-content a:hover {
   padding-left: 20px;
-
   background: #3b3b3b;
-
-  color: #2c87ff;
+  color: #2c87ff
 }
 
 .menu-close-btn {
-  display: none;
+  display: none
 }
 
-
-/* =========================================
-   TABLET / MOBILE MENU
-========================================= */
-
-@media (max-width: 1100px) {
-
+@media(max-width:1100px) {
   .hamburguer-btn-mobile {
-    display: flex;
+    display: flex
   }
-
-  /* HEADER */
 
   .header-principal {
     height: auto;
-
     padding: 15px 20px;
-
     flex-wrap: wrap;
-
-    gap: 12px;
+    gap: 12px
   }
 
   .logo {
     min-width: auto;
-
-    flex: 1;
+    flex: 1
   }
 
   .logo i {
-    font-size: 32px;
+    font-size: 32px
   }
 
   .logo h2 {
-    font-size: 24px;
+    font-size: 24px
   }
-
-
-  /* BUSCADOR */
 
   .search-container-form {
     order: 3;
-
     width: 100%;
-    max-width: none;
+    max-width: none
   }
 
   .search-container {
     height: 45px;
-
-    border-radius: 8px;
+    border-radius: 8px
   }
 
   .search-category {
     width: 80px;
-
     padding: 0 10px;
-
-    font-size: 12px;
+    font-size: 12px
   }
 
   .search-container input {
     padding: 0 15px;
-
-    font-size: 13px;
+    font-size: 13px
   }
 
   .search-container button {
-    width: 50px;
+    width: 50px
   }
 
   .search-container button i {
-    font-size: 18px;
+    font-size: 18px
   }
 
-
-  /* ACCIONES */
-
   .acciones-header {
-    gap: 12px;
+    gap: 12px
   }
 
   .acciones-header a {
-    gap: 6px;
+    gap: 6px
   }
 
   .acciones-header i {
-    font-size: 20px;
+    font-size: 20px
   }
 
   .acciones-header small,
   .user-link small,
   .login-registro-header small {
-    display: none;
+    display: none
   }
 
   .acciones-header span,
   .user-link span {
-    font-size: 12px;
+    font-size: 12px
   }
 
   .foto-perfil-header {
     width: 32px;
-    height: 32px;
+    height: 32px
   }
 
   .btn-logout-header {
     padding: 2px 6px;
-
-    font-size: 16px;
+    font-size: 16px
   }
 
   .login-registro-header {
-    gap: 8px;
+    gap: 8px
   }
 
   .login-registro-header span {
-    font-size: 11px;
+    font-size: 11px
   }
 
   .login-registro-header i {
-    font-size: 18px;
+    font-size: 18px
   }
-
-
-  /* BADGES */
 
   .badge-carrito,
   .badge-favorito {
     top: -6px;
     right: -8px;
-
     min-width: 16px;
     height: 16px;
-
-    font-size: 10px;
+    font-size: 10px
   }
-
-
-  /* MENU LATERAL */
 
   .menu-principal {
     position: fixed;
-
     top: 0;
     left: -100%;
-
     width: 85%;
     max-width: 400px;
     height: 100vh;
-
     padding: 20px 0;
-
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-
     overflow-y: auto;
-
     background: #1a1a2e;
-
-    border-right: 1px solid rgba(255, 255, 255, .05);
-
-    box-shadow: 4px 0 30px rgba(0, 0, 0, .3);
-
+    border-right: 1px solid #ffffff0d;
+    box-shadow: 4px 0 30px #0005;
     z-index: 1500;
-
-    transition: left .35s ease;
+    transition: left .35s ease
   }
 
   .menu-principal.menu-open {
-    left: 0;
+    left: 0
   }
-
-
-  /* CERRAR MENU */
 
   .menu-close-btn {
     display: flex;
     justify-content: flex-end;
-
     padding: 12px 24px 20px;
-
     margin-bottom: 8px;
-
-    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    border-bottom: 1px solid #ffffff14
   }
 
   .menu-close-btn button {
     padding: 4px 8px;
-
     background: transparent;
-
-    border: none;
-
+    border: 0;
     color: #fff;
-
     font-size: 28px;
-
     cursor: pointer;
-
-    transition: .25s;
+    transition: .25s
   }
-
-  .menu-close-btn button:hover {
-    color: #2c87ff;
-
-    transform: rotate(90deg);
-  }
-
-
-  /* LINKS */
 
   .btn-categorias {
-    display: none;
+    display: none
   }
 
   .menu-links {
     width: 100%;
-
     padding: 0 16px;
-
     flex-direction: column;
-
-    gap: 4px;
+    gap: 4px
   }
 
   .menu-links a {
     width: 100%;
     height: 48px;
-
     padding: 0 16px;
-
     justify-content: flex-start;
-
     background: transparent;
-
     border-radius: 10px;
-
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 600
   }
 
   .menu-links a:hover,
   .menu-links a.activo {
     color: #2c87ff;
-
-    background: rgba(44, 135, 255, .12);
+    background: #2c87ff1f
   }
 
-  .menu-links a.activo::after {
-    display: none;
+  .menu-links a.activo:after {
+    display: none
   }
-
-
-  /* ADMIN MOBILE */
 
   .admin-bar {
     width: 100%;
-
     padding: 12px 16px;
     margin-top: 8px;
-
     flex-direction: column;
-
     gap: 8px;
-
-    background: rgba(255, 255, 255, .03);
-
-    border-top: 1px solid rgba(255, 255, 255, .08);
-    border-bottom: none;
+    background: #ffffff08;
+    border-top: 1px solid #ffffff14;
+    border-bottom: 0
   }
 
   .dropdown-btn {
     width: 100%;
     min-width: auto;
-
     padding: 12px 16px;
-
     justify-content: space-between;
-
-    background: rgba(255, 255, 255, .05);
-
-    border-radius: 10px;
+    background: #ffffff0d;
+    border-radius: 10px
   }
 
   .dropdown-content {
     position: static;
-
     min-width: auto;
-
     margin-top: 4px;
-
-    background: rgba(255, 255, 255, .03);
-
-    border: 1px solid rgba(255, 255, 255, .08);
+    background: #ffffff08;
+    border: 1px solid #ffffff14;
     border-radius: 8px;
-
-    box-shadow: none;
+    box-shadow: none
   }
 
   .dropdown-content a {
     padding: 10px 16px;
-
-    border-bottom: 1px solid rgba(255, 255, 255, .03);
+    border-bottom: 1px solid #ffffff08
   }
-
 }
 
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 560px) {
-
+@media(max-width:560px) {
   .top-bar {
-    display: none;
+    display: none
   }
 
   .header-principal {
     padding: 10px 12px;
-
-    gap: 10px;
+    gap: 10px
   }
 
-
-  /* LOGO */
-
   .logo i {
-    font-size: 26px;
+    font-size: 26px
   }
 
   .logo h2 {
-    font-size: 18px;
+    font-size: 18px
   }
 
   .logo span {
-    font-size: 12px;
+    font-size: 12px
   }
 
   .div-ecommerce-store {
-    display: none;
+    display: none
   }
 
-
-  /* HEADER ACCIONES */
-
   .acciones-header {
-    gap: 7px;
+    gap: 7px
   }
 
   .acciones-header i {
-    font-size: 18px;
+    font-size: 18px
   }
 
   .acciones-header span {
-    font-size: 10px;
+    font-size: 10px
   }
 
   .hamburguer-btn-mobile {
     padding: 4px;
-
-    font-size: 24px;
+    font-size: 24px
   }
 
   .foto-perfil-header {
     width: 28px;
-    height: 28px;
+    height: 28px
   }
-
-  .btn-logout-header {
-    padding: 2px 4px;
-
-    font-size: 14px;
-  }
-
-
-  /* BUSCADOR */
 
   .search-container {
     height: 38px;
-
     border-width: 1.5px;
-    border-radius: 6px;
+    border-radius: 6px
   }
 
   .search-category {
     width: 65px;
-
     padding: 0 8px;
-
-    font-size: 10px;
+    font-size: 10px
   }
 
   .search-container input {
     padding: 0 10px;
-
-    font-size: 11px;
-  }
-
-  .search-container input::placeholder {
-    font-size: 10px;
+    font-size: 11px
   }
 
   .search-container button {
-    width: 40px;
+    width: 40px
   }
 
   .search-container button i {
-    font-size: 16px;
+    font-size: 16px
   }
-
-
-  /* MENU */
 
   .menu-principal {
     width: 88%;
     max-width: 350px;
-
-    padding: 16px 0;
+    padding: 16px 0
   }
 
   .menu-links {
-    padding: 0 12px;
+    padding: 0 12px
   }
 
   .menu-links a {
     height: 42px;
-
     padding: 0 14px;
-
-    font-size: 14px;
+    font-size: 14px
   }
 
   .menu-close-btn {
-    padding: 8px 16px 16px;
+    padding: 8px 16px 16px
   }
-
-  .menu-close-btn button {
-    font-size: 24px;
-  }
-
-
-  /* ADMIN */
 
   .admin-bar {
     padding: 10px 12px;
-
-    gap: 6px;
+    gap: 6px
   }
 
   .dropdown-btn {
     height: 38px;
-
     padding: 0 12px;
-
-    font-size: 13px;
+    font-size: 13px
   }
-
-  .dropdown-content a {
-    padding: 8px 14px;
-
-    font-size: 13px;
-  }
-
-}
-
-
-/* =========================================
-   MOBILE MUY PEQUEÑO
-========================================= */
-
-@media (max-width: 400px) {
-
-  .header-principal {
-    padding: 8px 10px;
-  }
-
-  .logo i {
-    font-size: 22px;
-  }
-
-  .logo h2 {
-    font-size: 16px;
-  }
-
-  .acciones-header i {
-    font-size: 16px;
-  }
-
-  .hamburguer-btn-mobile {
-    font-size: 20px;
-  }
-
-  .search-container {
-    height: 34px;
-  }
-
-  .search-category {
-    width: 55px;
-
-    padding: 0 6px;
-
-    font-size: 9px;
-  }
-
-  .search-container input {
-    padding: 0 8px;
-
-    font-size: 10px;
-  }
-
-  .search-container button {
-    width: 34px;
-  }
-
-  .search-container button i {
-    font-size: 14px;
-  }
-
-  .menu-principal {
-    width: 92%;
-    max-width: 300px;
-
-    padding: 12px 0;
-  }
-
-  .menu-links a {
-    height: 38px;
-
-    padding: 0 12px;
-
-    font-size: 13px;
-  }
-
-  .menu-close-btn button {
-    font-size: 20px;
-  }
-
 }

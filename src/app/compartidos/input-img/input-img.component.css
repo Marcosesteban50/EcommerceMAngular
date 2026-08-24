@@ -1,14 +1,222 @@
-.preview-container{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:15px;
+/* =========================
+   CONTENEDOR DEL COMPONENTE
+========================= */
+
+:host {
+  display: block;
+  width: 100%;
 }
 
-.preview-imagen{
-  width:100px;
-  height:140px;
-  object-fit:cover;
-  border-radius:8px;
-  border:1px solid #ddd;
+
+/* =========================
+   TÍTULO
+========================= */
+
+h3 {
+  margin: 0 0 14px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  color: #374151;
+}
+
+
+/* =========================
+   BOTONES
+========================= */
+
+.btn-subir-imagen,
+.btn-borrar-todo {
+  width: 45px;
+  height: 45px;
+
+  margin-right: 8px;
+
+  border: none;
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+/* SUBIR IMAGEN */
+
+.btn-subir-imagen {
+  background: #2a6133;
+  color: white;
+}
+
+.btn-subir-imagen:hover {
+  background: #0f2413;
+
+}
+
+
+/* BORRAR TODAS */
+
+.btn-borrar-todo {
+  background: #690101;
+  color: #fff;
+
+  
+}
+
+.btn-borrar-todo:hover {
+  background: #2c0000;
+ 
+}
+
+
+/* ICONOS */
+
+.btn-subir-imagen i,
+.btn-borrar-todo i {
+  font-size: 18px;
+}
+
+
+/* =========================
+   CONTENEDOR DE IMÁGENES
+========================= */
+
+.imagenes-preview {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-top: 18px;
+}
+
+
+/* =========================
+   TARJETA DE IMAGEN
+========================= */
+
+.preview {
+  position: relative;
+
+  width: 115px;
+  height: 125px;
+
+  padding: 4px;
+
+  background: white;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.05);
+
+  transition: 0.2s ease;
+}
+
+.preview:hover {
+  border-color: #9ca3af;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 7px 18px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================
+   IMAGEN
+========================= */
+
+.preview img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 8px;
+}
+
+
+/* =========================
+   BOTÓN X
+========================= */
+
+.btn-eliminar {
+  position: absolute;
+
+  top: 6px;
+  right: 6px;
+
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 7px;
+
+  background: rgba(17, 24, 39, 0.85);
+  color: white;
+
+  font-size: 17px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  opacity: 0;
+
+  transform: scale(0.9);
+
+  transition: 0.2s ease;
+}
+
+
+/* MOSTRAR X AL PASAR POR LA IMAGEN */
+
+.preview:hover .btn-eliminar {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.btn-eliminar:hover {
+  background: #dc2626;
+}
+
+
+/* =========================
+   IMÁGENES YA GUARDADAS
+========================= */
+
+.imagenes-preview.actuales {
+  margin-top: 16px;
+
+  padding-top: 16px;
+
+  border-top: 1px solid #e5e7eb;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+  .preview {
+    width: 95px;
+    height: 110px;
+  }
+
+  .btn-eliminar {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

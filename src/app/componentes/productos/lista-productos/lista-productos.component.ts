@@ -27,7 +27,7 @@ export class ListaProductosComponent implements OnInit {
 
   @Input({ required: true })
   productos!: ProductoDTO[];
- 
+
 
 
 
@@ -167,38 +167,40 @@ export class ListaProductosComponent implements OnInit {
         });
 
       }
+    } else {
+
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "bottom-end",
+        showConfirmButton: false,
+        timer: 4000,
+        timerProgressBar: true,
+
+      });
+
+
+      Toast.fire({
+        icon: 'error',
+        title: 'No estás logueado',
+        text: 'Inicia sesión para usar esta función',
+        position: 'bottom-end',
+        showConfirmButton: true,
+        confirmButtonText: 'Ir a Login',
+        confirmButtonColor: '#2c87ff',
+        showCancelButton: true,
+        cancelButtonText: 'Cancelar',
+        timer: 5000,
+        timerProgressBar: true
+
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.router.navigate(['/login'])
+
+        }
+      });
     }
 
 
-    const Toast = Swal.mixin({
-      toast: true,
-      position: "bottom-end",
-      showConfirmButton: false,
-      timer: 4000,
-      timerProgressBar: true,
-
-    });
-
-
-    Toast.fire({
-      icon: 'error',
-      title: 'No estás logueado',
-      text: 'Inicia sesión para usar esta función',
-      position: 'bottom-end',
-      showConfirmButton: true,
-      confirmButtonText: 'Ir a Login',
-      confirmButtonColor: '#2c87ff',
-      showCancelButton: true,
-      cancelButtonText: 'Cancelar',
-      timer: 5000,
-      timerProgressBar: true
-
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.router.navigate(['/login'])
-
-      }
-    });
 
   }
 
