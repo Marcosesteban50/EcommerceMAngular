@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { IServicioCRUD } from '../interfaces/iServicioCrud';
 import { AgregarMasProductosDTO, ProductoCreacionDTO, ProductoDTO, ProductoHistorial } from '../modelos/ProductoModelos/Producto';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
