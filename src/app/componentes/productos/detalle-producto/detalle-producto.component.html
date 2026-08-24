@@ -6,96 +6,145 @@
 
   <div class="card">
 
-    <!-- IMAGEN -->
-    <div>
-      <img
-        [src]="producto.imagenUrl"
-        class="card-img-top"
-        alt="{{ producto.nombre }}"
-      >
-    </div>
+    <!-- =========================
+           GALERÍA / CARRUSEL
+      ========================== -->
 
-    <!-- INFO PRODUCTO -->
-    <div class="product-info">
+    <section class="galeria-producto">
 
-      @if (producto.descripcion) {
+      @if (producto.imagenes?.length) {
+
+      <div class="carrusel">
+
+        <button type="button" class="flecha izquierda" aria-label="Imagen anterior" (click)="imagenAnterior()">
+          ❮
+        </button>
+
+        <img class="card-img-top" [src]="producto.imagenes![indiceImagen]" [alt]="producto.nombre">
+
+        <button type="button" class="flecha derecha" aria-label="Imagen siguiente" (click)="imagenSiguiente()">
+          ❯
+        </button>
+
+      </div>
+
+      @if (producto.imagenes!.length > 1) {
+
+      <div class="indicadores">
+
+        @for (imagen of producto.imagenes; track $index) {
+
+        <button type="button" class="punto" [class.activo]="$index === indiceImagen"
+          [attr.aria-label]="'Ver imagen ' + ($index + 1)" (click)="indiceImagen = $index">
+        </button>
+
+        }
+
+      </div>
+
+      }
+
+      } @else {
+
+      <div class="sin-imagen">
+        <span>Producto sin imagen</span>
+      </div>
+
+      }
+
+    </section>
+
+
+    <!-- =========================
+           CONTENIDO DERECHO
+      ========================== -->
+
+    <div class="detalle-derecho">
+
+      <!-- INFORMACIÓN -->
+      <section class="product-info">
+
+        @if (producto.descripcion) {
+
         <p class="text-muted">
           {{ producto.descripcion }}
         </p>
-      } @else {
+
+        } @else {
+
         <p class="text-muted fst-italic">
           Sin descripción
         </p>
-      }
 
-      <p>
-        <strong>Precio:</strong>
-        ${{ producto.precio }}
-      </p>
+        }
 
-      <p>
-        <strong>Stock:</strong>
-        {{ producto.stock }}
-      </p>
+        <p>
+          <strong>Precio:</strong>
+          ${{ producto.precio }}
 
-      @if (categorias) {
+          <small class="small-price">
+            o {{ PrecioA12Meses(producto.precio) | currency }}
+            /mensual por 12 meses
+          </small>
+        </p>
 
-      <p><strong>Categorías:</strong></p>
+        <p>
+          <strong>Stock:</strong>
+          {{ producto.stock }}
+        </p>
 
-      <ul class="ul-detalle-producto">
-        <li>{{ categorias.nombre }}</li>
-      </ul>
+        @if (categorias.length > 0) {
 
-      } @else {
+        <p>
+          <strong>Categoría:</strong>
+          {{ obtenerNombreCategoria(producto.categoriaId) }}
+        </p>
 
-      <p class="fst-italic">
-        No tiene categorías asignadas
-      </p>
+        } @else {
 
-      }
+        <p class="text-muted fst-italic">
+          Sin categoría
+        </p>
 
-    </div>
+        }
 
-    <!-- CAJA COMPRA -->
-    <div class="buy-box">
+      </section>
 
-      <div class="precio">
-        ${{ producto.precio }}
-      </div>
 
-      @if(producto.stock > 0){
+      <!-- CAJA DE COMPRA -->
 
-      <p class="stock">
-        En stock
-      </p>
+      <section class="buy-box">
 
-      <label for="cantidad">
-        Cantidad
-      </label>
+        <div class="precio">
+          ${{ producto.precio }}
+        </div>
 
-      <input
-        id="cantidad"
-        type="number"
-        min="1"
-        [(ngModel)]="cantidad"
-        class="input-cantidad"
-      >
+        @if (producto.stock > 0) {
 
-      <button
-        (click)="agregarAlCarrito(producto.id)"
-        class="btn-agregar"
-      >
-        Agregar al carrito
-      </button>
+        <p class="stock">
+          En stock
+        </p>
 
-      
-      } @else {
+        <label for="cantidad">
+          Cantidad
+        </label>
 
-      <p class="text-danger fw-bold">
-        No disponible actualmente
-      </p>
+        <input id="cantidad" type="number" min="1" [max]="producto.stock" [formControl]="form.controls.cantidad"
+          class="input-cantidad">
 
-      }
+        <button type="button" class="btn-agregar" (click)="agregarAlCarrito(producto.id)">
+          Agregar al carrito
+        </button>
+
+        } @else {
+
+        <p class="text-danger fw-bold">
+          No disponible actualmente
+        </p>
+
+        }
+
+      </section>
 
     </div>
 

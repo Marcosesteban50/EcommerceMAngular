@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { IServicioCRUD } from '../interfaces/iServicioCrud';
 import { AgregarMasProductosDTO, ProductoCreacionDTO, ProductoDTO, ProductoHistorial } from '../modelos/ProductoModelos/Producto';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.development';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -67,9 +67,20 @@ export class ProductoService implements IServicioCRUD<ProductoDTO, ProductoCreac
     formData.append('nombre', producto.nombre);
     if (producto.descripcion) formData.append('descripcion', producto.descripcion);
     formData.append('precio', producto.precio.toString());
-    if (producto.imagenUrl) formData.append('imagenUrl', producto.imagenUrl);
+    if (producto.imagenes) {
+      producto.imagenes.forEach(x => {
+        formData.append('imagenes', x);
+      })
+    }
     if (producto.categoriaId) formData.append('categoriaId', producto.categoriaId);
     formData.append('stock', producto.stock.toString());
+
+    console.log(producto.imagenes);
+
+    for (const pair of formData.entries()) {
+      console.log(pair[0], pair[1]);
+    }
+
     return formData;
 
   }

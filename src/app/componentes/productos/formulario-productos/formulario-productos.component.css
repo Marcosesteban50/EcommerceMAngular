@@ -1,21 +1,22 @@
 form {
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 25px;
-  border-radius: 12px;
-  background: #ffffff;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: min(92%, 650px);
+  margin: 45px auto;
+  padding: 35px;
+  background: #fff;
+  border: 1px solid #e8ebf0;
+  border-radius: 20px;
+  box-shadow: 0 15px 45px rgba(20, 30, 50, .08);
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
 }
 
-/* Campos ocupan todo el ancho */
+/* Campos */
 mat-form-field {
   width: 100%;
 }
 
-/* Textarea más cómodo */
+/* Textarea */
 textarea {
   resize: none;
 }
@@ -23,58 +24,93 @@ textarea {
 /* Imagen */
 app-input-img {
   display: block;
-  margin-top: 10px;
+  padding: 18px;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 14px;
 }
 
-/* Contenedor botones */
+/* Botones */
 .contenedor-botones {
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
-  margin-top: 10px;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 22px;
+  border-top: 1px solid #edf0f4;
 }
 
-/* Botón principal */
+/* Guardar */
 button[type="submit"] {
-  background-color: #3f51b5;
-  color: white;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
+  min-width: 145px;
+  height: 44px;
+  padding: 0 22px;
+  border: 0;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  box-shadow: 0 5px 14px rgba(37, 99, 235, .22);
+  transition: .25s ease;
 }
 
-/* Hover botón */
 button[type="submit"]:hover {
-  background-color: #303f9f;
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, .28);
 }
 
-/* Botón deshabilitado */
+button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* Deshabilitado */
 button[type="submit"]:disabled {
-  background-color: #b0b0b0;
+  background: #d1d5db;
+  color: #6b7280;
+  box-shadow: none;
   cursor: not-allowed;
+  transform: none;
 }
 
-/* Botón cancelar */
+/* Cancelar */
 a[mat-stroked-button] {
-  border-radius: 8px;
+  height: 44px;
+  padding: 0 22px;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: .25s ease;
+}
+
+a[mat-stroked-button]:hover {
+  background: #f3f4f6;
+}
+
+/* Focus de los inputs */
+::ng-deep .mat-mdc-form-field {
+  --mdc-outlined-text-field-container-shape: 10px;
 }
 
 /* Responsive */
 @media (max-width: 600px) {
+
   form {
-    padding: 15px;
+    width: calc(100% - 30px);
+    margin: 25px auto;
+    padding: 22px;
+    border-radius: 16px;
   }
 
   .contenedor-botones {
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: stretch;
   }
 
-  button,
-  a {
+  button[type="submit"],
+  a[mat-stroked-button] {
     width: 100%;
   }
 }

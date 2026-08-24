@@ -17,6 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class IndiceProductosComponent implements OnInit {
 
+
+  tituloPagina = 'Productos';
   productoServicio = inject(ProductoService);
   productos!: ProductoDTO[];
 

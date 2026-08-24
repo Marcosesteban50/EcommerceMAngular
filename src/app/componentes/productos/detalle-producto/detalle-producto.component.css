@@ -1,262 +1,604 @@
-/* ===== CONTENEDOR ===== */
+* {
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   CONTENEDOR
+========================= */
 
 .container {
-    max-width: 1400px;
-    margin: auto;
-    padding: 25px;
-    margin-top: 100px;
+  max-width: 1450px;
+  margin: 35px auto;
+  padding: 0 30px;
 }
 
 
-/* ===== TITULO ===== */
+/* =========================
+   TÍTULO
+========================= */
 
 h2 {
-    font-size: 2rem;
-    font-weight: 700;
+  margin-bottom: 30px;
 
-    color: #111827;
-    text-align: center;
-    margin-bottom: 25px;
+  color: #111827;
+
+  font-size: 2.2rem;
+  font-weight: 750;
+  text-align: center;
+
+  letter-spacing: -0.03em;
 }
 
 
-/* ===== CARD PRINCIPAL ===== */
+/* =========================
+   CARD PRINCIPAL
+========================= */
 
 .card {
-    display: grid;
+  display: grid;
 
-    grid-template-columns:
-        520px 1fr 320px;
+  grid-template-columns:
+    minmax(420px, 600px) minmax(320px, 1fr);
 
-    gap: 35px;
+  gap: 55px;
 
-    border: none;
-    border-radius: 24px;
+  padding: 35px;
 
-    background: white;
+  background: #ffffff;
 
-    padding: 30px;
+  border: 1px solid #eef0f3;
+  border-radius: 28px;
 
-    box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.06);
-
-    overflow: hidden;
+  box-shadow:
+    0 20px 60px rgba(15, 23, 42, 0.07);
 }
 
 
-/* ===== IMAGEN ===== */
+/* =========================
+   GALERÍA
+========================= */
+
+.galeria-producto {
+  width: 100%;
+  min-width: 0;
+}
+
+
+.carrusel {
+  position: relative;
+
+  width: 100%;
+  height: 580px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: #f8f9fb;
+
+  border: 1px solid #eef0f3;
+  border-radius: 24px;
+
+  box-shadow:
+    0 12px 35px rgba(15, 23, 42, 0.05);
+}
+
+
+/* =========================
+   IMAGEN
+========================= */
 
 .card-img-top {
-    width: 100%;
-    height: 620px;
+  width: 100%;
+  height: 100%;
 
-    object-fit: contain;
+  padding: 30px;
 
-    border-radius: 18px;
+  object-fit: contain;
 
-    background: #f9fafb;
+  display: block;
 
-    padding: 20px;
+  transition:
+    transform 0.35s ease,
+    opacity 0.3s ease;
 }
 
 
-/* ===== INFO PRODUCTO ===== */
+.carrusel:hover .card-img-top {
+  transform: scale(1.035);
+}
+
+
+/* =========================
+   FLECHAS
+========================= */
+
+.flecha {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.94);
+  color: #111827;
+
+  font-size: 22px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.12);
+
+  transform: translateY(-50%);
+
+  opacity: 0;
+
+  transition:
+    opacity 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.carrusel:hover .flecha {
+  opacity: 1;
+}
+
+
+.flecha:hover {
+  background: #111827;
+  color: #ffffff;
+
+  transform:
+    translateY(-50%) scale(1.08);
+}
+
+
+.flecha:active {
+  transform:
+    translateY(-50%) scale(0.95);
+}
+
+
+.izquierda {
+  left: 18px;
+}
+
+
+.derecha {
+  right: 18px;
+}
+
+
+/* =========================
+   INDICADORES
+========================= */
+
+.indicadores {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 15px;
+}
+
+
+.punto {
+  width: 9px;
+  height: 9px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 20px;
+
+  background: #d1d5db;
+
+  cursor: pointer;
+
+  transition:
+    width 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.punto:hover {
+  background: #9ca3af;
+
+  transform: scale(1.15);
+}
+
+
+.punto.activo {
+  width: 28px;
+
+  background: #111827;
+
+  transform: none;
+}
+
+
+/* =========================
+   SIN IMAGEN
+========================= */
+
+.sin-imagen {
+  width: 100%;
+  height: 580px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f8f9fb;
+
+  border: 1px dashed #d1d5db;
+  border-radius: 24px;
+
+  color: #9ca3af;
+
+  font-size: 15px;
+  font-weight: 500;
+}
+
+
+/* =========================
+   LADO DERECHO
+========================= */
+
+.detalle-derecho {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 28px;
+}
+
+
+/* =========================
+   INFORMACIÓN
+========================= */
 
 .product-info {
-    display: flex;
-    flex-direction: column;
+  padding: 10px 5px;
 }
 
-.text-muted {
-    color: #6b7280 !important;
-
-    line-height: 1.7;
-    font-size: 15px;
-
-    margin-bottom: 20px;
-}
 
 .product-info p {
-    font-size: 15px;
-    color: #374151;
+  margin-bottom: 17px;
 
-    margin-bottom: 12px;
+  color: #4b5563;
+
+  font-size: 15px;
+  line-height: 1.75;
 }
 
 
-/* ===== PRECIO ===== */
+.product-info strong {
+  color: #111827;
 
-.precio {
-    font-size: 2rem;
-    font-weight: 700;
-
-    color: #111827;
-
-    margin-bottom: 15px;
+  font-weight: 650;
 }
 
 
-/* ===== CATEGORIAS ===== */
-
-.ul-detalle-producto {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-
-    list-style: none;
-    padding: 0;
-
-    margin-top: 10px;
-    margin-bottom: 25px;
-}
-
-.ul-detalle-producto li {
-    background: #f3f4f6;
-
-    padding: 8px 14px;
-
-    border-radius: 999px;
-
-    font-size: 14px;
-    font-weight: 500;
-
-    color: #374151;
+.text-muted {
+  color: #6b7280 !important;
 }
 
 
-/* ===== CAJA COMPRA ===== */
+.small-price {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #6b7280;
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   CAJA DE COMPRA
+========================= */
 
 .buy-box {
-    border: 1px solid #e5e7eb;
+  width: 100%;
+  max-width: 520px;
 
-    border-radius: 18px;
+  padding: 26px;
 
-    padding: 22px;
+  background: #ffffff;
 
-    height: fit-content;
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
 
-    position: sticky;
-    top: 20px;
+  box-shadow:
+    0 15px 40px rgba(15, 23, 42, 0.06);
 }
 
-.buy-box .precio {
-    font-size: 2.1rem;
+
+/* =========================
+   PRECIO
+========================= */
+
+.precio {
+  margin-bottom: 12px;
+
+  color: #111827;
+
+  font-size: 2.25rem;
+  font-weight: 800;
+
+  letter-spacing: -0.04em;
 }
+
+
+/* =========================
+   STOCK
+========================= */
 
 .stock {
-    color: #16a34a;
+  margin-bottom: 22px;
 
-    font-size: 18px;
-    font-weight: 600;
+  color: #16a34a;
 
-    margin-bottom: 18px;
+  font-size: 16px;
+  font-weight: 650;
 }
 
 
-/* ===== INPUT ===== */
+/* =========================
+   LABEL
+========================= */
 
 label {
-    display: block;
+  display: block;
 
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 
-    font-weight: 600;
+  color: #374151;
 
-    color: #111827;
+  font-size: 14px;
+  font-weight: 650;
 }
+
+
+/* =========================
+   INPUT CANTIDAD
+========================= */
 
 .input-cantidad {
-    width: 100%;
-    height: 45px;
+  width: 100%;
+  height: 48px;
 
-    border-radius: 12px;
-    border: 1px solid #d1d5db;
+  padding: 0 15px;
+  margin-bottom: 18px;
 
-    padding: 0 14px;
+  background: #ffffff;
 
-    outline: none;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
 
-    margin-bottom: 18px;
+  color: #111827;
 
-    font-size: 15px;
+  font-size: 15px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
+
 
 .input-cantidad:focus {
-    border-color: #111827;
+  border-color: #111827;
 
-    box-shadow: 0 0 0 4px rgba(17, 24, 39, 0.07);
+  box-shadow:
+    0 0 0 4px rgba(17, 24, 39, 0.07);
 }
 
 
-/* ===== BOTONES ===== */
+/* =========================
+   BOTÓN AGREGAR
+========================= */
 
 .btn-agregar {
-    width: 100%;
-    height: 48px;
+  width: 100%;
+  height: 50px;
 
-    border: none;
-    border-radius: 999px;
+  border: 0;
+  border-radius: 13px;
 
-    font-size: 15px;
-    font-weight: 600;
+  background: #111827;
+  color: #ffffff;
 
-    cursor: pointer;
+  font-size: 15px;
+  font-weight: 650;
 
-    transition: all 0.25s ease;
+  cursor: pointer;
 
-    margin-bottom: 12px;
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-.btn-agregar {
-    background: #facc15;
-    color: #111827;
-}
 
 .btn-agregar:hover {
-    background: #eab308;
+  background: #000000;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px rgba(17, 24, 39, 0.20);
 }
 
 
+.btn-agregar:active {
+  transform: translateY(0);
+}
 
 
-/* ===== RESPONSIVE ===== */
+/* =========================
+   TABLET
+========================= */
 
-@media (max-width: 1200px) {
+@media (max-width: 1100px) {
 
-    .card {
-        grid-template-columns: 1fr;
-    }
+  .card {
+    grid-template-columns: 1fr;
 
-    .buy-box {
-        position: static;
-    }
+    gap: 35px;
+  }
+
+
+  .galeria-producto {
+    max-width: 700px;
+    margin: auto;
+  }
+
+
+  .carrusel,
+  .sin-imagen {
+    height: 500px;
+  }
+
+
+  .detalle-derecho {
+    width: 100%;
+  }
+
+
+  .buy-box {
+    max-width: 100%;
+  }
 
 }
 
 
-@media (max-width: 768px) {
+/* =========================
+   MÓVIL
+========================= */
 
-    .container {
-        padding: 14px;
-    }
+@media (max-width: 600px) {
 
-    .card {
-        padding: 18px;
-        gap: 20px;
+  .container {
+    margin-top: 15px;
 
-        border-radius: 18px;
-    }
+    padding: 0 12px;
+  }
 
-    .card-img-top {
-        height: 360px;
-    }
 
-    h2 {
-        font-size: 1.5rem;
-    }
+  h2 {
+    margin-bottom: 20px;
 
-    .precio {
-        font-size: 1.7rem;
-    }
+    font-size: 1.6rem;
+  }
+
+
+  .card {
+    padding: 15px;
+
+    gap: 25px;
+
+    border-radius: 20px;
+  }
+
+
+  .carrusel,
+  .sin-imagen {
+    height: 370px;
+
+    border-radius: 18px;
+  }
+
+
+  .card-img-top {
+    padding: 15px;
+  }
+
+
+  .flecha {
+    width: 38px;
+    height: 38px;
+
+    font-size: 18px;
+
+    opacity: 1;
+  }
+
+
+  .izquierda {
+    left: 10px;
+  }
+
+
+  .derecha {
+    right: 10px;
+  }
+
+
+  .detalle-derecho {
+    gap: 20px;
+  }
+
+
+  .product-info {
+    padding: 0;
+  }
+
+
+  .buy-box {
+    padding: 20px;
+
+    border-radius: 17px;
+  }
+
+
+  .precio {
+    font-size: 1.9rem;
+  }
+
+}
+
+
+/* =========================
+   MÓVIL PEQUEÑO
+========================= */
+
+@media (max-width: 400px) {
+
+  .carrusel,
+  .sin-imagen {
+    height: 310px;
+  }
+
+
+  .flecha {
+    width: 34px;
+    height: 34px;
+
+    font-size: 16px;
+  }
 
 }

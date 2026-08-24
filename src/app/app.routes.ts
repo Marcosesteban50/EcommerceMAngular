@@ -32,6 +32,8 @@ import { EditarEstadoPagoComponent } from './componentes/estados/editar-estado-p
 import { IndiceOrdenesComponent } from './componentes/ordenes/indice-ordenes/indice-ordenes.component';
 import { AdminService } from './servicios/admin.service';
 import { AdmindashboardComponent } from './compartidos/admin/admindashboard/admindashboard.component';
+import { FavoritoComponent } from './componentes/favorito/favorito.component';
+import { ContactoComponent } from './componentes/contacto/contacto.component';
 
 
 
@@ -65,6 +67,9 @@ export const routes: Routes = [
   { path: 'registrar', component: RegistroComponent },
   { path: 'listadoUsuarios', component: ListaUsuariosComponent ,canActivate: [esAdminGuard]},
   { path: 'carrito', component: CarritoComponent },
+  { path: 'favoritos', component: FavoritoComponent },
+  { path: 'contacto', component: ContactoComponent },
+
 
 
 

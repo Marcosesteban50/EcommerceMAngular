@@ -1,0 +1,219 @@
+.banner-home {
+
+    width: 100%;
+
+    min-height: 260px;
+
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 35px 50px;
+
+    background:
+        radial-gradient(circle at top right,
+            rgba(44, 135, 255, .45),
+            transparent 30%),
+        linear-gradient(135deg,
+            #02142f 0%,
+            #07275c 50%,
+            #0d4fb8 100%);
+
+    position: relative;
+}
+
+/* TEXTO */
+
+.banner-info {
+
+    width: 50%;
+
+    color: white;
+
+    z-index: 2;
+}
+
+.banner-info h1 {
+
+    font-size: 52px;
+
+    font-weight: 900;
+
+    line-height: 1.1;
+
+    margin-bottom: 20px;
+}
+
+.banner-info span {
+
+    color: #5eb1ff;
+}
+
+.banner-info p {
+
+    max-width: 550px;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    color: rgba(255, 255, 255, .85);
+
+    margin-bottom: 35px;
+}
+
+/* BOTONES */
+
+.banner-buttons {
+
+    display: flex;
+
+    gap: 15px;
+}
+
+.btn-banner-primary {
+
+    border: none;
+
+    background: #2c87ff;
+
+    color: white;
+
+
+
+    padding: 16px 28px;
+
+    border-radius: 12px;
+
+    font-weight: 700;
+
+    cursor: default;
+}
+
+.btn-banner-secondary {
+
+    border: 2px solid rgba(255, 255, 255, .2);
+
+    background: transparent;
+
+    color: white;
+
+    text-decoration: none;
+    padding: 16px 28px;
+
+    border-radius: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+/* LADO DERECHO */
+
+.banner-image {
+
+    width: 40%;
+
+    height: 100%;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+.circle-glow {
+
+    width: 200px;
+
+    height: 200px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            #2c87ff,
+            transparent 70%);
+
+    filter: blur(20px);
+}
+
+.cart-icon {
+
+    position: absolute;
+
+    font-size: 120px;
+
+    color: white;
+}
+
+/* TARJETAS */
+
+.floating-card {
+
+    position: absolute;
+
+    background: rgba(255, 255, 255, .08);
+
+    backdrop-filter: blur(20px);
+
+    color: white;
+
+    padding: 15px 20px;
+
+    border-radius: 15px;
+
+    font-weight: 600;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.envio {
+
+    left: 20px;
+    top: 100px;
+}
+
+.seguro {
+
+    right: 20px;
+    top: 180px;
+}
+
+.ofertas {
+
+    top: 30px;
+    right: 120px;
+}
+
+.floating-card i {
+
+    color: #5eb1ff;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 1200px) {
+
+    .banner-home {
+
+
+        display: none;
+    }
+
+
+}

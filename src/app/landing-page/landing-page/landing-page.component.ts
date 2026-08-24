@@ -5,12 +5,14 @@ import { ProductoService } from '../../servicios/producto.service';
 import Aos from 'aos';
 
 import { FiltroProductoLandingComponent } from "../../componentes/productos/filtro-producto-landing/filtro-producto-landing.component";
+import { HeroBannerComponent } from "../hero-banner/hero-banner.component";
+import { Router } from '@angular/router';
 
 
 
 @Component({
   selector: 'app-landing-page',
-  imports: [FiltroProductoLandingComponent],
+  imports: [FiltroProductoLandingComponent, HeroBannerComponent],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
@@ -33,10 +35,11 @@ export class LandingPageComponent implements OnInit {
 
 
   productoServicio = inject(ProductoService);
+  router = inject(Router);
   productos!: ProductoDTO[];
 
 
-  
+
   recibirProductos(productos: ProductoDTO[]) {
     this.productos = productos;
   }
@@ -46,7 +49,4 @@ export class LandingPageComponent implements OnInit {
 }
 
 
-//Utilizar esto cuando empezemos a agregar componnetes dinamicamente
-// ngAfterViewInit(): void {
-//   Aos.refresh(); // refresca animaciones al cargar vista
-// }
+

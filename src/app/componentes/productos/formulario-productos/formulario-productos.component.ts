@@ -25,7 +25,9 @@ export class FormularioProductosComponent implements OnInit {
 
 
     if (this.modelo !== undefined) {
-      this.form.patchValue(this.modelo);
+      const { imagenes, ...datosFormulario } = this.modelo;
+
+      this.form.patchValue(datosFormulario);
     }
 
     this.categoriaServicio.obtenerTodos().subscribe({
@@ -54,7 +56,7 @@ export class FormularioProductosComponent implements OnInit {
     nombre: ['', { validators: [Validators.required] }],
     descripcion: ['', { validators: [Validators.required, Validators.maxLength(200)] }],
     precio: [0, { validators: [Validators.required] }],
-    imagenUrl: new FormControl<File | string | null>(null),
+    imagenes: new FormControl<File[]>([]),
     categoriaId: ['', [Validators.required]],
     stock: [0, { validators: [Validators.required] }]
 
@@ -63,8 +65,8 @@ export class FormularioProductosComponent implements OnInit {
 
 
 
-  archivoSeleccionado(file: File) {
-    this.form.controls.imagenUrl.setValue(file);
+  archivoSeleccionado(files: File[]) {
+    this.form.controls.imagenes.setValue(files);
   }
 
   guardarCambios() {
@@ -76,11 +78,6 @@ export class FormularioProductosComponent implements OnInit {
     const producto = this.form.value as ProductoCreacionDTO;
 
     console.log("Datos", producto);
-
-    //Si editamos y la foto no se cambia la mandamos undefined ahorrando memoria en backend
-    if (typeof producto.imagenUrl === "string") {
-      producto.imagenUrl = undefined
-    }
 
     this.posteoFormulario.emit(producto);
   }

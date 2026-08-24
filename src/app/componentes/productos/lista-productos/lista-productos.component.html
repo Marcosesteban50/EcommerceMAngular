@@ -2,57 +2,127 @@
 
   <ng-container contenido>
 
-    <div class="container mt-4">
+    <div class="productos-grid">
+
+      @for (producto of productos; track producto.id) {
+
+      <div class="producto-card">
+
+        <!-- BADGE -->
+
+        <div class="badge-descuento">
+          <p>-20%</p>
+        </div>
+
+
+        <!-- IMAGEN -->
+
+        <a [routerLink]="'/productos/' + producto.id" class="producto-imagen-container">
+
+          <img [src]="producto.imagenes?.[0]" [alt]="producto.nombre" class="producto-imagen">
+
+        </a>
 
 
 
+        <!-- INFO -->
+
+        <div class="producto-info">
+
+          <!-- ESTRELLAS -->
+
+          <div class="rating">
+
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-half"></i>
+
+            <span>(83)</span>
+
+          </div>
+
+          <a [routerLink]="'/productos/' + producto.id" class="producto-titulo">
+
+            {{ producto.nombre }}
+
+          </a>
 
 
-      <div class="row">
-        @for (producto of productos; track producto.id) {
+          <p>{{producto.descripcion}}</p>
 
-        <div class="producto-item">
-          <div class="card h-100 shadow-sm">
+          <div class="precio-container">
+
+            <span class="precio">
+
+              {{ producto.precio | currency }}
 
 
-            <a class="image-container" [routerLink]="'/productos/' + producto.id">
-              <img [src]="producto.imagenUrl" class="card-img-top" alt="{{ producto.nombre }}">
-            </a>
 
-            <div class="card-body">
-              <a [routerLink]="'/productos/' + producto.id" class="product-link">
-                <h5 class="card-title">{{ producto.nombre }}</h5>
-              </a>
+            </span>
 
-              <p class="fw-bold">{{ producto.precio | currency }}</p>
+          </div>
+          <small class="small-price">o {{PrecioA12Meses(producto.precio) | currency}}/mensual por 12 meses</small>
 
+        </div>
+
+        <!-- ADMIN -->
+
+        <app-autorizado rol="Admin">
+
+          <ng-container autorizado>
+
+            <div class="acciones-admin">
+
+              <button [routerLink]="'/productos/editar/' + producto.id" class="btn-editar">
+
+                <i class="bi bi-pencil-square"></i>
+
+              </button>
+
+              <button (click)="borrar(producto.id)" class="btn-borrar">
+
+                <i class="bi bi-trash"></i>
+
+              </button>
 
             </div>
 
-            <app-autorizado rol="Admin">
-              <ng-container autorizado>
-                <div class="card-actions">
-                  <button [routerLink]="'/productos/editar/' + producto.id" class="BTN-Editar">
-                    <span class="icon-edit"><i class="bi bi-pencil-square"></i></span> 
-                  </button>
+          </ng-container>
 
-                  <button (click)="borrar(producto.id)" class="BTN-Borrar">
-                    <span><i class="bi bi-trash-fill"></i></span> 
-                  </button>
-                </div>
-              </ng-container>
-            </app-autorizado>
+        </app-autorizado>
 
-            <button (click)="agregarAlCarrito(producto)" class="BTN-agregar">
-              <span class="cart-icon"><i class="bi bi-cart4"></i></span> Agregar al carrito
-            </button>
+        <!-- CARRITO -->
 
-          </div>
+        <div class="Agregar-Favoritos-Carrito">
+          <button (click)="agregarAlCarrito(producto)" class="btn-carrito">
+
+
+            Agregar al carrito
+
+          </button>
+
+          <!-- FAVORITO -->
+          <button class="btn-favorito" [class.activo]="esFavorito(producto.id)" (click)="toggleFavorito(producto)">
+
+            <i class="bi" [class.bi-heart]="!esFavorito(producto.id)" [class.bi-heart-fill]="esFavorito(producto.id)">
+            </i>
+            <i class="bi bi-heart-fill icon-hover"></i>
+
+          </button>
         </div>
 
-        }
+
+
       </div>
+
+      }
+
     </div>
+
+
+
 
   </ng-container>
 

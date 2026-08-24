@@ -1,182 +1,210 @@
-<nav [class.collapsed]="menuColapsado">
-  <div class="nav-container">
+<nav>
 
-    <div class="actions-container-responsive">
-      <a routerLink="/carrito" class="carrito-link-responsive" (click)="cerrarMenu()">
-        <div class="carrito-icon-responsive">
-          <i class="bi bi-cart"></i>
-          @if(cantidadCarrito > 0){
-          <span class="badge-carrito-responsive">{{ cantidadCarrito }}</span>
+  <!-- HEADER -->
+  <div class="header-principal">
+
+    <!-- Botón hamburguesa (solo visible en móvil) -->
+    <div class="hamburguer-btn-mobile" (click)="toggleMenu()">
+      <i class="bi bi-list"></i>
+    </div>
+
+    <!-- LOGO -->
+    <a routerLink="" class="logo">
+      <i class="bi bi-bag-check-fill"></i>
+      <div class="div-ecommerce-store">
+        <h2>Ecommerce</h2>
+        <span>Store</span>
+      </div>
+    </a>
+
+    <!-- BUSCADOR -->
+    <form [formGroup]="formBusqueda" class="search-container-form">
+      <div class="search-container">
+        <select class="search-category" [formControl]="formBusqueda.controls.categoriaId"
+          (change)="onCategoriaChange()">
+          <option value="">Todas</option>
+          @for(x of categorias; track x.id){
+          <option [value]="x.id">{{x.nombre}}</option>
           }
+        </select>
+        <input type="text" placeholder="¿Qué producto estás buscando?" [formControl]="formBusqueda.controls.nombre" />
+        <button type="button" (click)="onCategoriaChange()">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </form>
+
+    <!-- ACCIONES HEADER -->
+    <div class="acciones-header">
+
+
+      <!-- SECCIÓN USUARIO - LOGIN / REGISTRO / PERFIL -->
+
+      <app-autorizado>
+
+        <!-- USUARIO LOGUEADO -->
+        <ng-container autorizado>
+          <div class="user-info-header">
+            <a routerLink="/perfil" class="user-link">
+              @if (obtenerFotoPerfil()) {
+              <img [src]="obtenerFotoPerfil()" alt="Foto de perfil" class="foto-perfil-header"
+                referrerpolicy="no-referrer" />
+              } @else {
+              <img src="/fotos-ecommerce/User.jpg" alt="Foto de perfil" class="foto-perfil-header"
+                referrerpolicy="no-referrer" />
+              }
+              <div>
+                <small>Mi Cuenta</small>
+                <span>Perfil</span>
+              </div>
+            </a>
+            <button (click)="seguridadService.logout(); cerrarMenu()" class="btn-logout-header" title="Cerrar sesión">
+              <i class="bi bi-box-arrow-in-left"></i>Logout
+            </button>
+          </div>
+        </ng-container>
+
+        <!-- USUARIO NO LOGUEADO -->
+        <ng-container noAutorizado>
+          <div class="login-registro-header">
+            <a routerLink="login" (click)="cerrarMenu()">
+              <i class="bi bi-box-arrow-in-right"></i>
+              <div>
+                <small>Acceder</small>
+                <span>Login</span>
+              </div>
+            </a>
+            <a routerLink="registrar" (click)="cerrarMenu()">
+              <i class="bi bi-person-plus"></i>
+              <div>
+                <small>Crear cuenta</small>
+                <span>Registrar</span>
+              </div>
+            </a>
+          </div>
+        </ng-container>
+
+      </app-autorizado>
+
+
+      <!-- FAVORITOS -->
+
+      <a routerLink="/favoritos" class="favoritos-link">
+        <div class="favorito-icono">
+          <i class="bi bi-heart"></i>
+          @if(cantidadFavorito > 0){
+          <span class="badge-favorito">
+            {{ cantidadFavorito }}
+          </span>
+          }
+        </div>
+        <div>
+          <small>Favoritos</small>
         </div>
       </a>
 
-      <form [formGroup]="formBusqueda" class="search-container-form-responsive">
-        <button class="btn-search-responsive" type="button" (click)="toggleBusqueda()">
-          <i class="bi bi-search"></i>
-        </button>
+      <!-- CARRITO -->
 
-        <div class="search-overlay-responsive" [class.activo]="busquedaActiva">
-          <div class="search-container-responsive">
-            <select class="search-category" [formControl]="formBusqueda.controls.categoriaId"
-              (change)="onCategoriaChange()">
-              <option value="">Todas</option>
-              @for(x of categorias; track x.id){
-              <option [value]="x.id">{{x.nombre}}</option>
-              }
-            </select>
-            <input type="text" placeholder="Buscar productos..." [formControl]="formBusqueda.controls.nombre" />
-            <button type="button" (click)="onCategoriaChange()">
-              <i class="bi bi-search"></i>
-            </button>
-          </div>
+      <a routerLink="/carrito" class="carrito-link">
+        <div class="carrito-icono">
+          <i class="bi bi-cart4"></i>
+          @if(cantidadCarrito > 0){
+          <span class="badge-carrito">
+            {{ cantidadCarrito }}
+          </span>
+          }
         </div>
-      </form>
+        <div>
+          <small>Carrito</small>
+        </div>
+      </a>
 
-      <div class="opc-container">
-        <div class="toggle-btn" (click)="toggleMenu()">
-          <i class="bi bi-list i-btn-toggle"></i>
-        </div>
-      </div>
     </div>
 
-    <div class="content-under-hamburguer">
-
-
-      <!-- Links Ordenes -->
-      <app-autorizado rol="Admin">
-        <ng-container autorizado>
-          <div class="dropdown-menu-admin">
-            <button class="dropdown-btn" type="button">
-              <i class="bi bi-grid"></i>
-              <span>Órdenes</span>
-              <i class="bi bi-chevron-down flecha"></i>
-            </button>
-            <div class="dropdown-content">
-              <a routerLink="/productos/historialProductos" (click)="cerrarMenu()">
-                <i class="bi bi-clock-history"></i> <span>Historial</span>
-              </a>
-              <a routerLink="/admin/ordenes" (click)="cerrarMenu()">
-                <i class="bi bi-receipt"></i> <span>Órdenes</span>
-              </a>
-              <a routerLink="/estadosOrdenes" (click)="cerrarMenu()">
-                <i class="bi bi-diagram-3"></i> <span>Estados Órdenes</span>
-              </a>
-              <a routerLink="/estadosPagos" (click)="cerrarMenu()">
-                <i class="bi bi-credit-card"></i> <span>Estados Pagos</span>
-              </a>
-              <a routerLink="/admin/dashboard" (click)="cerrarMenu()">
-                <i class="bi bi-speedometer2"></i> <span>Dashboard</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Links administrador -->
-          <div class="dropdown-menu-admin">
-            <button class="dropdown-btn" type="button">
-              <i class="bi bi-grid"></i>
-              <span>Administración</span>
-              <i class="bi bi-chevron-down flecha"></i>
-            </button>
-            <div class="dropdown-content">
-              <a routerLink="/productos" (click)="cerrarMenu()">
-                <i class="bi bi-boxes"></i> <span>Productos</span>
-              </a>
-              <a routerLink="/categorias" (click)="cerrarMenu()">
-                <i class="bi bi-tags"></i> <span>Categorías</span>
-              </a>
-              <a routerLink="/listadoUsuarios" (click)="cerrarMenu()">
-                <i class="bi bi-people"></i> <span>Usuarios</span>
-              </a>
-              <a routerLink="/productos/pendientes" (click)="cerrarMenu()">
-                <i class="bi bi-hourglass-split"></i> <span>Pendientes</span>
-              </a>
-            </div>
-          </div>
-        </ng-container>
-      </app-autorizado>
-
-      <div class="container-normal">
-
-
-        <a routerLink="" (click)="cerrarMenu()" class="brand-link">
-          <i class="bi bi-box-seam"></i>
-          <span>Ecommerce</span>
-        </a>
-        <a routerLink="/carrito" (click)="cerrarMenu()" class="carrito-link">
-          <div class="carrito-icono">
-            <i class="bi bi-cart3"></i>
-            @if(cantidadCarrito > 0){
-            <span class="badge-carrito">{{ cantidadCarrito }}</span>
-            }
-          </div>
-          <span>Carrito</span>
-        </a>
-
-        <a routerLink="/perfil" (click)="cerrarMenu()">
-          <i class="bi bi-person-circle"></i>
-          <span>Perfil</span>
-        </a>
-
-      </div>
-      <form [formGroup]="formBusqueda" class="search-container-form">
-        <div class="search-Bar">
-          <button class="btn-search-nav" type="button" (click)="toggleBusqueda(); cerrarMenu()">
-            <i class="bi bi-search"></i>
-          </button>
-          <div class="search-overlay" [class.activo]="busquedaActiva">
-            <div class="search-container">
-              <select class="search-category" [formControl]="formBusqueda.controls.categoriaId"
-                (change)="onCategoriaChange()">
-                <option value="">Todas</option>
-                @for(x of categorias; track x.id){
-                <option [value]="x.id">{{x.nombre}}</option>
-                }
-              </select>
-              <input type="text" placeholder="Buscar productos..." [formControl]="formBusqueda.controls.nombre" />
-              <button type="button" (click)="onCategoriaChange()"><i class="bi bi-search"></i></button>
-            </div>
-          </div>
-        </div>
-      </form>
-
-      <div class="user-container">
-        <app-autorizado>
-          <ng-container autorizado>
-            <div class="contenedor-usuario">
-              <div class="user-info">
-                @if (obtenerFotoPerfil()) {
-                <img [src]="obtenerFotoPerfil()" alt="Foto de perfil" class="foto-perfil"
-                  referrerpolicy="no-referrer" />
-                } @else {
-                <img src="/fotos-ecommerce/User.jpg" alt="Foto de perfil" class="foto-perfil"
-                  referrerpolicy="no-referrer" />
-                }
-                <span class="email">{{ seguridadService.obtenerCampoJWT('email') }}</span>
-              </div>
-              <button (click)="seguridadService.logout(); cerrarMenu()" class="btn-logout">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Logout</span>
-              </button>
-            </div>
-          </ng-container>
-          <ng-container noAutorizado>
-            <div class="contenedor-login-registro">
-              <a routerLink="login" (click)="cerrarMenu()">
-                <i class="bi bi-box-arrow-in-right iconLR"></i>
-                <span>Login</span>
-              </a>
-              <a routerLink="registrar" (click)="cerrarMenu()">
-                <i class="bi bi-person-plus iconLR"></i>
-                <span>Registrar</span>
-              </a>
-            </div>
-          </ng-container>
-        </app-autorizado>
-      </div>
-
-    </div>
   </div>
+
+  <!-- MENU LATERAL HAMBURGUESA -->
+  <div class="menu-principal" [class.menu-open]="!menuColapsado">
+
+    <!-- Botón cerrar -->
+    <div class="menu-close-btn">
+      <button (click)="toggleMenu()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+
+    <!-- Logo dentro del menú -->
+    <div class="btn-categorias">
+      <i class="bi bi-shop"></i>
+    </div>
+
+    <div class="menu-links">
+      <a routerLink="/landing" routerLinkActive="activo" [routerLinkActiveOptions]="{ exact: true }"
+        (click)="cerrarMenu()">
+        <i class="bi bi-house-door"></i>Inicio
+      </a>
+      <a routerLink="/productos" routerLinkActive="activo" (click)="cerrarMenu()">
+        <i class="bi bi-shop"></i>Tienda
+      </a>
+      <a routerLink="/contacto" routerLinkActive="activo" (click)="cerrarMenu()">
+        <i class="bi bi-headset"></i> Atención Al Cliente
+      </a>
+      <!-- <a routerLink="/contacto" routerLinkActive="activo" (click)="cerrarMenu()">
+        Contacto
+      </a> -->
+    </div>
+
+    <!-- MENUS ADMIN -->
+    <app-autorizado rol="Admin">
+      <ng-container autorizado>
+        <div class="admin-bar">
+          <!-- ÓRDENES -->
+          <!--class.active = clase agregada segun valor de la variable-->
+          <div class="dropdown-menu-admin" [class.active]="dropdownOrdenesOpen">
+            <button class="dropdown-btn" (click)="toggleDropdown('ordenes')">
+              <i class="bi bi-grid"></i>
+              <span> Órdenes</span>
+              <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="dropdown-content" [class.open]="dropdownOrdenesOpen">
+              <a routerLink="/productos/historialProductos">
+                <i class="bi bi-clock-history"></i>Historial</a>
+              <a routerLink="/admin/ordenes">
+                <i class="bi bi-grid"></i>Órdenes</a>
+              <a routerLink="/estadosOrdenes">
+                <i class="bi bi-list-check"></i>Estados Órdenes</a>
+              <a routerLink="/estadosPagos">
+                <i class="bi bi-credit-card-2-front"></i>Estados Pagos</a>
+              <a routerLink="/admin/dashboard">
+                <i class="bi bi-clipboard-data"></i>Dashboard</a>
+            </div>
+          </div>
+
+          <!-- ADMIN -->
+          <!--class.active = clase agregada segun valor de la variable-->
+          <div class="dropdown-menu-admin" [class.active]="dropdownAdminOpen">
+            <button class="dropdown-btn" (click)="toggleDropdown('admin')">
+              <i class="bi bi-gear"></i>
+              <span>Administración</span>
+              <i class="bi bi-chevron-down"></i>
+            </button>
+            <div class="dropdown-content" [class.open]="dropdownAdminOpen">
+              <a routerLink="/productos">
+                <i class="bi bi-box-seam"></i>Productos</a>
+              <a routerLink="/categorias">
+                <i class="bi bi-tags"></i>Categorías</a>
+              <a routerLink="/listadoUsuarios">
+                <i class="bi bi-people"></i>Usuarios</a>
+              <a routerLink="/productos/pendientes">
+                <i class="bi bi-hourglass"></i>Pendientes</a>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </app-autorizado>
+
+  </div>
+
 </nav>
 
 <app-ia></app-ia>

@@ -1,384 +1,469 @@
-/* ========================================
-   CONTENEDOR GENERAL
-======================================== */
-
-
-
-.container {
-
-  margin: auto;
-  position: relative;
-  top: 0px;
-  left: 0;
-}
-
-
-
-
-/* ========================================
+/* ==========================
    GRID PRODUCTOS
-======================================== */
+========================== */
 
-.row {
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(auto-fill, minmax(200px, 1fr));
-
-
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
 }
 
-
-/* ========================================
-   ITEM
-======================================== */
-
-
-
-/* ========================================
-   CARD
-======================================== */
-
-.card {
-
-  width: 100%;
-
-  position: relative;
-
-  overflow: hidden;
-
-  border-radius: 28px;
-
-  background:
-    rgba(255, 255, 255, 0.72);
-
-  backdrop-filter: blur(18px);
-
-  border:
-    1px solid rgba(255, 255, 255, 0.35);
-
-  box-shadow:
-    0 15px 45px rgba(0, 0, 0, 0.08);
-
-  transition:
-    transform .35s ease,
-    box-shadow .35s ease,
-    border .35s ease;
-
-  padding-bottom: 18px;
+.small-price {
+    color: #888;
 }
 
+/* ==========================
+   TARJETA
+========================== */
 
-/* ========================================
-   HOVER CARD
-======================================== */
-
-.card:hover {
-
-
-
-  box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.16);
-
-  border:
-    1px solid rgba(255, 255, 255, 0.55);
+.producto-card {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #ececec;
+    position: relative;
+    overflow: hidden;
+    transition: .3s;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
+.producto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, .08);
+}
 
-/* ========================================
+/* ==========================
+   DESCUENTO
+========================== */
+
+.badge-descuento {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #2c87ff;
+    color: #000000;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 10px 5px;
+    border-radius: 4px 10px;
+    z-index: 5;
+    line-height: 1;
+}
+
+.badge-descuento p {
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================
    IMAGEN
-======================================== */
+========================== */
 
-
-
-.image-container {
-
-  width: 100%;
-
-  height: 260px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  overflow: hidden;
-
-  background: #f8fafc;
-
-  padding: 20px;
+.producto-imagen-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 260px;
+    padding: 25px;
 }
 
-.card-img-top {
-
-  max-width: 100%;
-
-  max-height: 100%;
-
-  object-fit: contain;
-
-  padding: 24px;
-
-  transition:
-    transform .45s ease;
-
-
-
+.producto-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: .3s;
 }
 
-
-/* ========================================
-   ZOOM IMAGEN
-======================================== */
-
-
-
-
-/* ========================================
-   BODY
-======================================== */
-
-.card-body {
-
-  padding:
-    22px 24px 12px;
+.producto-card:hover .producto-imagen {
+    transform: scale(1.05);
 }
 
+/* ==========================
+   INFO
+========================== */
 
-/* ========================================
-   LINK
-======================================== */
-
-.product-link {
-
-  text-decoration: none;
+.producto-info {
+    padding: 0 20px 20px;
+    flex: 1;
 }
 
-
-/* ========================================
-   TITULO
-======================================== */
-
-.card-title {
-
-  font-size: 22px;
-
-  font-weight: 700;
-
-  color: #111827;
-
-  margin-bottom: 12px;
-
-  line-height: 1.3;
-
-  transition: .25s ease;
+.rating {
+    color: #FFB800;
+    font-size: 13px;
+    margin-bottom: 10px;
 }
 
-
-.card:hover .card-title {
-
-  color: #2563eb;
+.rating span {
+    color: #888;
+    margin-left: 5px;
 }
 
+.producto-titulo {
+    display: block;
+    text-decoration: none;
+    color: #111;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.4;
+    min-height: 48px;
+    margin-bottom: 15px;
+}
 
-/* ========================================
+.producto-titulo:hover {
+    color: #2C87FF;
+}
+
+/* ==========================
    PRECIO
-======================================== */
+========================== */
 
-.fw-bold {
-
-  font-size: 24px;
-
-  font-weight: 800;
-
-  color: #111827;
-
-  margin-top: 10px;
+.precio-container {
+    margin-bottom: 15px;
 }
 
-
-/* ========================================
-   ACCIONES ADMIN
-======================================== */
-
-.card-actions {
-
-  display: flex;
-
-  gap: 12px;
-
-  padding:
-    0 22px 18px;
+.precio {
+    font-size: 30px;
+    font-weight: 800;
+    color: #111;
 }
 
-
-
-/* ========================================
+/* ==========================
    BOTONES ADMIN
-======================================== */
+========================== */
 
-.BTN-Editar,
-.BTN-Borrar {
+.acciones-admin {
+    display: flex;
+    gap: 10px;
+    padding: 0 20px 15px;
+}
 
-  flex: 1;
+.btn-editar,
+.btn-borrar {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
 
-  height: 46px;
+.btn-editar {
+    background: #EAF3FF;
+    color: #2C87FF;
+}
 
-  border: none;
+.btn-borrar {
+    background: #FFF0F0;
+    color: #ff4d4f;
+}
 
-  border-radius: 14px;
+.btn-editar:hover {
+    background: #2C87FF;
+    color: #fff;
+    transform: scale(1.05);
+}
 
-  font-size: 15px;
+.btn-borrar:hover {
+    background: #ff4d4f;
+    color: #fff;
+    transform: scale(1.05);
+}
 
-  font-weight: 700;
+/* ==========================
+   CARRITO Y FAVORITO (CONTENEDOR)
+========================== */
 
-  cursor: pointer;
+.Agregar-Favoritos-Carrito {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 20px 20px;
+    margin-top: auto;
+}
 
-  transition:
-    .25s ease;
+/* ===== BOTÓN CARRITO ===== */
+.btn-carrito {
+    flex: 1;
+    height: 48px;
+    border: none;
+    border-radius: 14px;
+    background: rgba(74, 120, 248, 0.50);
+    color: #020202;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+}
+
+.btn-carrito:hover {
+    background: rgba(74, 120, 248, 0.80);
+}
+
+.btn-carrito i {
+    color: #eeeeee;
+    font-size: 10px;
+    transition: transform 0.3s ease;
+}
+
+/* ===== BOTÓN FAVORITO - CON HOVER ===== */
+.btn-favorito {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.1s ease;
+    position: relative;
+}
+
+.btn-favorito i {
+    font-size: 18px;
+    transition: all 0.1s ease;
+    position: absolute;
+}
+
+/* Icono principal (vacío o lleno según estado) */
+.btn-favorito .icon-principal {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Icono hover (siempre lleno) - oculto por defecto */
+.btn-favorito .icon-hover {
+    color: #ff4d4f;
+    opacity: 0;
+    transform: scale(1);
+}
+
+/* ocultamos el principal y mostramos el hover */
+.btn-favorito:hover .icon-principal {
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+.btn-favorito:hover .icon-hover {
+    opacity: 1;
+    transform: scale(1);
 }
 
 
-/* ========================================
-   EDITAR
-======================================== */
-
-.BTN-Editar {
-
-  background:
-    linear-gradient(135deg,
-      #4f8cff,
-      #2563eb);
-
-  color: white;
-}
-
-.BTN-Editar:hover {
-
-  transform:
-    translateY(-2px);
-
-  box-shadow:
-    0 8px 20px rgba(37, 99, 235, 0.3);
+/* Cuando está activo - color rojo */
+.btn-favorito.activo .icon-principal {
+    color: #ff4d4f;
 }
 
 
-/* ========================================
-   BORRAR
-======================================== */
-
-.BTN-Borrar {
-
-  background:
-    linear-gradient(135deg,
-      #ff6b6b,
-      #ef4444);
-
-  color: white;
-}
-
-.BTN-Borrar:hover {
-
-  transform:
-    translateY(-2px);
-
-  box-shadow:
-    0 8px 20px rgba(239, 68, 68, 0.3);
-}
-
-
-/* ========================================
-   BOTON AGREGAR
-======================================== */
-
-.BTN-agregar {
-
-  width: calc(100% - 44px);
-
-  height: 52px;
-
-  border: none;
-
-  border-radius: 16px;
-
-  margin: 10px auto 0;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-
-  cursor: pointer;
-
-  font-size: 15px;
-
-  font-weight: 700;
-
-  color: rgb(0, 0, 0);
-
-  background: #eebc28;
-
-
-  transition:
-    0.3s ease;
-}
-
-
-/* ========================================
-   HOVER BOTON AGREGAR
-======================================== */
-
-.BTN-agregar:hover {
 
 
 
-  background: #92741a;
-}
-
-
-/* ========================================
-   ICONO CARRITO
-======================================== */
-
-.cart-icon {
-
-  font-size: 18px;
-}
-
-
-/* ========================================
+/* ==========================
    RESPONSIVE
-======================================== */
+========================== */
 
 @media (max-width: 768px) {
+    .productos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
 
-  .container {
+    .producto-imagen-container {
+        height: 180px;
+        padding: 20px;
+    }
 
-    padding: 20px;
-  }
+    .precio {
+        font-size: 22px;
+    }
 
-  .row {
+    .Agregar-Favoritos-Carrito {
+        padding: 0 16px 16px;
+        gap: 10px;
+    }
 
-    grid-template-columns: 1fr;
+    .btn-carrito {
+        height: 42px;
+        font-size: 13px;
+        border-radius: 12px;
+    }
 
-    gap: 28px;
-  }
+    .btn-carrito i {
+        font-size: 16px;
+    }
 
-  .card-img-top {
+    .btn-favorito {
+        width: 38px;
+        height: 38px;
+    }
 
-    height: 230px;
-  }
+    .btn-favorito i {
+        font-size: 18px;
+    }
 
-  .card-title {
+    .badge-descuento {
+        top: 10px;
+        left: 10px;
+    }
 
-    font-size: 20px;
-  }
+    .badge-descuento i {
+        font-size: 20px;
+    }
 
-  .fw-bold {
+    .producto-info {
+        padding: 0 16px 16px;
+    }
 
-    font-size: 22px;
-  }
+    .acciones-admin {
+        padding: 0 16px 12px;
+    }
+
+    .btn-editar,
+    .btn-borrar {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 500px) {
+    .productos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .producto-imagen-container {
+        height: 220px;
+        padding: 20px;
+    }
+
+    .precio {
+        font-size: 24px;
+    }
+
+    .producto-titulo {
+        font-size: 16px;
+        min-height: 42px;
+    }
+
+    .Agregar-Favoritos-Carrito {
+        padding: 0 16px 16px;
+        gap: 10px;
+    }
+
+    .btn-carrito {
+        height: 44px;
+        font-size: 14px;
+        border-radius: 12px;
+    }
+
+    .btn-favorito {
+        width: 42px;
+        height: 42px;
+    }
+
+    .btn-favorito i {
+        font-size: 20px;
+    }
+
+    .badge-descuento {
+        top: 10px;
+        left: 10px;
+    }
+
+    .badge-descuento i {
+        font-size: 22px;
+    }
+
+    .acciones-admin {
+        padding: 0 16px 12px;
+    }
+
+    .btn-editar,
+    .btn-borrar {
+        width: 40px;
+        height: 40px;
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 380px) {
+    .productos-grid {
+        gap: 15px;
+    }
+
+    .producto-imagen-container {
+        height: 180px;
+        padding: 15px;
+    }
+
+    .precio {
+        font-size: 20px;
+    }
+
+    .producto-titulo {
+        font-size: 14px;
+        min-height: 36px;
+        margin-bottom: 10px;
+    }
+
+    .rating {
+        font-size: 11px;
+        margin-bottom: 6px;
+    }
+
+    .Agregar-Favoritos-Carrito {
+        padding: 0 12px 12px;
+        gap: 8px;
+    }
+
+    .btn-carrito {
+        height: 38px;
+        font-size: 12px;
+        border-radius: 10px;
+        gap: 6px;
+    }
+
+    .btn-carrito i {
+        font-size: 14px;
+    }
+
+    .btn-favorito {
+        width: 36px;
+        height: 36px;
+    }
+
+    .btn-favorito i {
+        font-size: 16px;
+    }
+
+    .producto-info {
+        padding: 0 12px 12px;
+    }
+
+    .acciones-admin {
+        padding: 0 12px 10px;
+        gap: 6px;
+    }
+
+    .btn-editar,
+    .btn-borrar {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
 }

@@ -7,6 +7,59 @@
   padding: 30px 20px;
 }
 
+
+
+/* ===== BENEFICIOS FOOTER ===== */
+.beneficios {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+   
+
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+.beneficio {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.beneficio i {
+    font-size: 2rem;
+    color: #2C87FF;
+}
+
+.beneficio h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.beneficio p {
+    margin: 4px 0 0;
+    color: #666;
+    font-size: .9rem;
+}
+
+@media (max-width: 900px) {
+    .beneficios {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .beneficios {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* ===== HEADER (TITULO + BOTON) ===== */
 
 h2 {

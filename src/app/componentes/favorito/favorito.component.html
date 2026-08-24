@@ -1,0 +1,44 @@
+<div class="container mt-4">
+
+
+  @if(obtenerNombreUsuario() !== ''){
+
+  <h2> {{obtenerNombreUsuario()}}'s Lista</h2>
+  }@else {
+  <h2>Lista de Favoritos</h2>
+  }
+
+
+  @if (lista.length === 0) {
+  <p>No hay productos en la lista de favoritos.</p>
+  }
+
+  @for (p of lista; track $index) {
+  <div class="carrito-item">
+
+    <!-- <p>{{p | json}}</p> -->
+
+    <button class="btn-delete" (click)="eliminar(p.productoId)"><i class="bi bi-trash"></i></button>
+
+    <img [src]="p.imagenUrl" class="carrito-img">
+
+    <div class="carrito-info">
+      <h4>{{ p.nombreProducto }}</h4>
+      <b>{{ p.precio | currency}}</b>
+      <button (click)="agregarAlCarrito(p)" class="btn-carrito">
+
+        <i class="bi bi-cart3"></i>
+
+        Agregar al carrito
+
+      </button>
+    </div>
+
+
+
+
+  </div>
+  }
+
+
+</div>

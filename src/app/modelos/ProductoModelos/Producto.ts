@@ -6,7 +6,7 @@ export interface ProductoDTO {
   nombre: string;
   descripcion?: string;
   precio: number;
-  imagenUrl?: string;
+  imagenes?: string[];
   categoriaId?: string;
   categoria?: CategoriaDTO; 
   stock: number;
@@ -19,7 +19,7 @@ export interface ProductoCreacionDTO{
   nombre: string;
   descripcion?: string;
   precio: number;
-  imagenUrl?: File;
+  imagenes?: File[];
   categoriaId?: string;
   stock: number;
 }

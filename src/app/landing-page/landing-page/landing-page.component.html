@@ -1,9 +1,45 @@
-
 <div class="contenedor-imagenes" data-aos="fade-left" data-aos-duration="1200">
 
+
+  <app-hero-banner></app-hero-banner>
+
+    <app-filtro-producto-landing class="lista" (productosFiltrados)="recibirProductos($event)">
+    </app-filtro-producto-landing>
+
+    <div class="beneficios">
+      <div class="beneficio">
+        <i class="bi bi-truck"></i>
+        <div>
+          <h4>Envío gratis</h4>
+          <p>En pedidos mayores</p>
+        </div>
+      </div>
+
+      <div class="beneficio">
+        <i class="bi bi-shield-check"></i>
+        <div>
+          <h4>Pago seguro</h4>
+          <p>100% protegido</p>
+        </div>
+      </div>
+
+      <div class="beneficio">
+        <i class="bi bi-headset"></i>
+        <div>
+          <h4>Soporte 24/7</h4>
+          <p>Estamos para ayudarte</p>
+        </div>
+      </div>
+
+      <div class="beneficio">
+        <i class="bi bi-arrow-repeat"></i>
+        <div>
+          <h4>Devoluciones fáciles</h4>
+          <p>30 días de garantía</p>
+        </div>
+      </div>
+    </div>
+
   
-
-  <app-filtro-producto-landing (productosFiltrados)="recibirProductos($event)"></app-filtro-producto-landing>
-
 
 </div>

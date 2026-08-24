@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,9 +11,8 @@ import { CategoriaDTO } from '../../modelos/CategoriaModelos/Categoria';
 import { CategoriaService } from '../../servicios/categoria.service';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { CarritoService } from '../../servicios/carrito.service';
-import { MatFormField, MatLabel } from "@angular/material/form-field";
-import { MatSelect, MatOption } from "@angular/material/select";
 import { MatSliderModule } from '@angular/material/slider';
+import { FavoritoService } from '../../servicios/favorito.service';
 
 @Component({
   selector: 'app-menu',
@@ -24,6 +23,7 @@ import { MatSliderModule } from '@angular/material/slider';
     MatButtonModule,
     MatSidenavModule,
     RouterLink,
+    RouterLinkActive,
     AutorizadoComponent,
     IaComponent,
     MatSliderModule
@@ -39,9 +39,14 @@ export class MenuComponent implements OnInit {
   seguridadService = inject(SeguridadService);
   categoriaServicio = inject(CategoriaService);
   carritoServicio = inject(CarritoService);
+  favoritoServicio = inject(FavoritoService);
   cantidadCarrito = 0;
+  cantidadFavorito = 0;
   busquedaActiva = false;
-  menuColapsado = false;
+  menuColapsado = true;
+  dropdownOrdenesOpen = false;
+  dropdownAdminOpen = false;
+
 
   categorias: CategoriaDTO[] = [];
 
@@ -55,61 +60,37 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     this.cargarCategorias();
 
-
     this.carritoServicio.cantidadCarrito$.subscribe(x => {
       this.cantidadCarrito = x;
     });
 
+    this.favoritoServicio.cantidadFavoritos$.subscribe(x => {
+      this.cantidadFavorito = x;
+    });
+
     this.carritoServicio.actualizarCantidad();
-
-
-
   }
 
   obtenerFotoPerfil(): string {
     return this.seguridadService.obtenerFotoUsuario();
   }
 
-
-  actualizarCarritoMenu() {
-
-    var logeado = this.seguridadService.estaLogueado();
-
-    if (logeado) {
-      this.carritoServicio.actualizarCantidad();
-    }
-
-
-    return;
-  }
-
-
   obtenerCarritoLocal() {
-    //metodo si esta logeado el user
     var logeado = this.seguridadService.estaLogueado();
-
-    //obteniendo Carrito local del local storage
     const carrito = JSON.parse(localStorage.getItem('carritoInvitado') || '[]');
 
-
-    //Si esta logeado obtenemos el carrito del usuario
     if (logeado) {
       this.carritoServicio.obtenerCarrito().subscribe(x => {
-        //obtenemos cantidad de items del carrito
         this.cantidadCarrito = x.items.length;
-      })
+      });
+
+      this.favoritoServicio.obtenerFavoritos().subscribe(x => {
+        this.cantidadFavorito = x.items.length;
+      });
     }
 
-
-    //Si no obtenemos cantidad de items del carrito local
     this.cantidadCarrito = carrito.length;
-
-    console.log("cantidad de carrito", this.cantidadCarrito);
   }
-
-
-
-
 
   cargarCategorias(): void {
     this.categoriaServicio.obtenerTodos().subscribe({
@@ -123,37 +104,27 @@ export class MenuComponent implements OnInit {
   }
 
   onCategoriaChange() {
-
-
     const categoriaId = this.formBusqueda.controls.categoriaId.value;
     const nombre = this.formBusqueda.controls.nombre.value;
 
     if (!categoriaId && !nombre) {
-
-
       this.router.navigate(['/productos/filtrar']);
-
     }
 
-
-    //navegamos al filtro con los valores de busqueda mandandolos en queryParams
     this.router.navigate(['/productos/filtrar'], {
       queryParams: {
-
         categoriaId: categoriaId || null,
         nombre: nombre || null
       }
     });
 
-
-
     this.busquedaActiva = false;
   }
 
 
-  //Esto es para el responsive
+
   cerrarMenu(): void {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 1100) {
       this.menuColapsado = true;
     }
   }
@@ -164,5 +135,23 @@ export class MenuComponent implements OnInit {
 
   toggleBusqueda(): void {
     this.busquedaActiva = !this.busquedaActiva;
+  }
+
+
+  toggleDropdown(x: string) {
+    if (x === 'ordenes') {
+      this.dropdownOrdenesOpen = !this.dropdownOrdenesOpen;
+      this.dropdownAdminOpen = false;
+    }
+    else if (x === 'admin') {
+      this.dropdownAdminOpen = !this.dropdownAdminOpen;
+      this.dropdownOrdenesOpen = false;
+    }
+  }
+
+
+  obtenerNombreUsuario(): string {
+    const email = this.seguridadService.obtenerCampoJWT('email');
+    return email ? email.split('@')[0] : '';
   }
 }

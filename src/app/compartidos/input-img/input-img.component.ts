@@ -12,40 +12,51 @@ export class InputImgComponent {
 
 
 
-  
+
   @Input({ required: true })
   titulo!: string;
 
   @Input()
-  urlImagenActual?:string;
+  urlImagenesActuales?: string[];
 
   @Output()
-  archivoSeleccionado = new EventEmitter<File>();
+  archivoSeleccionado = new EventEmitter<File[]>();
 
 
   //Imagen Convertida de Bites a Representacion en string
-  imagenBase64?: string;
+  imagenesBase64: string[] = [];
 
-  cambio(event: Event) {
+
+
+  async cambio(event: Event) {
 
     const input = event.target as HTMLInputElement;
 
 
     //Si Fue seleccionado un archivo
-    if (input.files && input.files.length > 0) {
-      //Primer Archivo
-      const file: File = input.files[0];
+    if (!input.files?.length) {
+      return;
+    }
 
-      //Exitoso ejecutamos el  then      
-      toBase64(file).then((valor: string) => this.imagenBase64 = valor)
-        .catch(error => console.log(error));
-      this.archivoSeleccionado.emit(file);
+    const archivos = Array.from(input.files);
 
-      //Si seleccionamos nueva imagen borramos la anterior
-      this.urlImagenActual = undefined
+    this.imagenesBase64 = [];
+    for (const archivo of archivos) {
+      try {
+        const base64 = await toBase64(archivo);
+
+        this.imagenesBase64.push(base64);
+      }
+      catch (error) {
+        console.error(error);
+      }
     }
 
 
+    console.log('Archivos Seleccionados',archivos);
+
+
+    this.archivoSeleccionado.emit(archivos);
   }
 
 }

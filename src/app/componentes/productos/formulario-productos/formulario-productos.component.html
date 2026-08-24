@@ -6,13 +6,13 @@
     <mat-error></mat-error>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field appearance="outline">
     <mat-label>Descripción</mat-label>
     <textarea matInput rows="3" [formControl]="form.controls.descripcion"></textarea>
   </mat-form-field>
 
 
-  <mat-form-field>
+  <mat-form-field appearance="outline">
 
     <mat-label>Precio</mat-label>
     <input matInput type="number" [formControl]="form.controls.precio">
@@ -34,7 +34,7 @@
 
   <div>
     <app-input-img
-    [urlImagenActual]="modelo?.imagenUrl"
+    [urlImagenesActuales]="modelo?.imagenes"
      titulo="Foto Del producto" (archivoSeleccionado)="archivoSeleccionado($event)"></app-input-img>
   </div>
 
