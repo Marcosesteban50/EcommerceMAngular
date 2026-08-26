@@ -22,6 +22,9 @@ export class InputImgComponent {
   @Output()
   archivoSeleccionado = new EventEmitter<File[]>();
 
+  @Output()
+  imagenActualEliminada = new EventEmitter<string>();
+
 
   //Imagen que enviamos en archivo hacia el backend
   archivosSeleccionados: File[] = [];
@@ -73,6 +76,24 @@ export class InputImgComponent {
   }
 
 
+
+  eliminarImagenActual(index: number) {
+
+
+    //Si no hay Imagenes actuales no hacemos nada
+    if (!this.urlImagenesActuales) {
+      return;
+    }
+
+    // Guardamos la URL de la imagen antes de eliminarla osea la imagen en si
+    const imagenEliminada = this.urlImagenesActuales[index];
+
+    // La quitamos visualmente 
+    this.urlImagenesActuales.splice(index, 1);
+
+    // Avisamos al padre cuál imagen existente fue eliminada
+    this.imagenActualEliminada.emit(imagenEliminada);
+  }
 
   eliminarTodasImagenes() {
 

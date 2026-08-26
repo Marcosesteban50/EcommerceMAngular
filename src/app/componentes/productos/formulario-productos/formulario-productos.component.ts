@@ -38,6 +38,7 @@ export class FormularioProductosComponent implements OnInit {
   }
 
 
+
   @Input()
   modelo?: ProductoDTO;
 
@@ -49,6 +50,7 @@ export class FormularioProductosComponent implements OnInit {
   posteoFormulario = new EventEmitter<ProductoCreacionDTO>();
 
 
+  imagenesEliminadas: string[] = [];
   private formBuilder = inject(FormBuilder);
 
 
@@ -77,9 +79,22 @@ export class FormularioProductosComponent implements OnInit {
 
     const producto = this.form.value as ProductoCreacionDTO;
 
+    producto.imagenesEliminadas = this.imagenesEliminadas;
+
     console.log("Datos", producto);
 
     this.posteoFormulario.emit(producto);
+  }
+
+
+  imagenActualEliminada(url: string) {
+
+    this.imagenesEliminadas.push(url);
+
+    console.log(
+      'Imágenes existentes a eliminar:',
+      this.imagenesEliminadas
+    );
   }
 
 

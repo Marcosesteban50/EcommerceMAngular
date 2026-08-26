@@ -30,7 +30,6 @@ import { IndiceEstadoPagoComponent } from './componentes/estados/indice-estado-p
 import { CrearEstadoPagoComponent } from './componentes/estados/crear-estado-pago/crear-estado-pago.component';
 import { EditarEstadoPagoComponent } from './componentes/estados/editar-estado-pago/editar-estado-pago.component';
 import { IndiceOrdenesComponent } from './componentes/ordenes/indice-ordenes/indice-ordenes.component';
-import { AdminService } from './servicios/admin.service';
 import { AdmindashboardComponent } from './compartidos/admin/admindashboard/admindashboard.component';
 import { FavoritoComponent } from './componentes/favorito/favorito.component';
 import { ContactoComponent } from './componentes/contacto/contacto.component';

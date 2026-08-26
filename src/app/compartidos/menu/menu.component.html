@@ -22,11 +22,13 @@
       <div class="search-container">
         <select class="search-category" [formControl]="formBusqueda.controls.categoriaId"
           (change)="onCategoriaChange()">
+
           <option value="">Todas</option>
           @for(x of categorias; track x.id){
           <option [value]="x.id">{{x.nombre}}</option>
           }
         </select>
+       
         <input type="text" placeholder="¿Qué producto estás buscando?" [formControl]="formBusqueda.controls.nombre" />
         <button type="button" (click)="onCategoriaChange()">
           <i class="bi bi-search"></i>

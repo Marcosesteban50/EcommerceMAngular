@@ -1,0 +1,328 @@
+/* =========================================
+   CONTENEDOR
+========================================= */
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 35px 25px;
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.container>h2 {
+    color: #111827;
+
+    font-size: 28px;
+    font-weight: 800;
+
+    letter-spacing: -0.5px;
+}
+
+
+/* =========================================
+   CARD PRINCIPAL
+========================================= */
+
+.historial-detalle {
+    position: relative;
+
+    padding: 32px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.05),
+        0 2px 8px rgba(0, 0, 0, 0.03);
+
+    overflow: hidden;
+}
+
+
+/* Línea decorativa superior */
+
+.historial-detalle::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background: linear-gradient(90deg,
+            #2563eb,
+            #6366f1,
+            #8b5cf6);
+}
+
+
+/* =========================================
+   ACCIÓN
+========================================= */
+
+.historial-detalle h4 {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.historial-detalle h4 strong {
+    display: inline-block;
+
+    padding: 7px 14px;
+
+    background: #eff6ff;
+
+    border: 1px solid #dbeafe;
+    border-radius: 999px;
+
+    color: #2563eb;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   FECHA
+========================================= */
+
+.historial-detalle .text-muted {
+    color: #6b7280;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   INFORMACIÓN GENERAL
+========================================= */
+
+.historial-detalle p {
+    margin: 10px 0;
+
+    color: #4b5563;
+
+    font-size: 14px;
+}
+
+.historial-detalle p strong {
+    color: #111827;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   SEPARADOR
+========================================= */
+
+.historial-detalle hr {
+    margin: 28px 0;
+
+    border: none;
+    border-top: 1px solid #e5e7eb;
+
+    opacity: 1;
+}
+
+
+/* =========================================
+   TÍTULOS ANTES / DESPUÉS
+========================================= */
+
+.historial-detalle h5 {
+    display: flex;
+    align-items: center;
+
+    margin: 25px 0 10px;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+
+/* ANTES */
+
+.historial-detalle h5.text-danger {
+    color: #dc2626;
+}
+
+.historial-detalle h5.text-danger::before {
+    content: "−";
+
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 8px;
+
+    background: #fee2e2;
+
+    border-radius: 50%;
+
+    color: #dc2626;
+
+    font-size: 18px;
+}
+
+
+/* DESPUÉS */
+
+.historial-detalle h5.text-success {
+    color: #16a34a;
+}
+
+.historial-detalle h5.text-success::before {
+    content: "+";
+
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 8px;
+
+    background: #dcfce7;
+
+    border-radius: 50%;
+
+    color: #16a34a;
+
+    font-size: 17px;
+}
+
+
+/* =========================================
+   BLOQUES JSON
+========================================= */
+
+.historial-detalle pre {
+    width: 100%;
+
+    margin: 0;
+    padding: 20px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+
+    color: #334155;
+
+    font-family:
+        "Consolas",
+        "Courier New",
+        monospace;
+
+    font-size: 13px;
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+    word-break: break-word;
+
+    overflow-x: auto;
+}
+
+
+/* JSON ANTES */
+
+.historial-detalle h5.text-danger+pre {
+    background: #fffafa;
+
+    border-color: #fecaca;
+    border-left: 4px solid #ef4444;
+}
+
+
+/* JSON DESPUÉS */
+
+.historial-detalle h5.text-success+pre {
+    background: #f8fff9;
+
+    border-color: #bbf7d0;
+    border-left: 4px solid #22c55e;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.alert-info {
+    padding: 25px;
+
+    background: #eff6ff;
+
+    border: 1px solid #bfdbfe;
+    border-radius: 14px;
+
+    color: #1d4ed8;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+    .container {
+        padding: 20px 14px;
+    }
+
+    .container>h2 {
+        font-size: 22px;
+    }
+
+    .historial-detalle {
+        padding: 22px 18px;
+        border-radius: 16px;
+    }
+
+    .historial-detalle>.d-flex {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .historial-detalle pre {
+        padding: 15px;
+
+        font-size: 12px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .container>h2 {
+        font-size: 19px;
+    }
+
+    .historial-detalle {
+        padding: 18px 14px;
+    }
+
+    .historial-detalle p {
+        font-size: 13px;
+    }
+
+}

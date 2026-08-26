@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { IServicioCRUD } from '../interfaces/iServicioCrud';
 import { AgregarMasProductosDTO, ProductoCreacionDTO, ProductoDTO, ProductoHistorial } from '../modelos/ProductoModelos/Producto';
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.development';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -72,6 +72,29 @@ export class ProductoService implements IServicioCRUD<ProductoDTO, ProductoCreac
         formData.append('imagenes', x);
       })
     }
+
+
+    // IMÁGENES NUEVAS
+    if (producto.imagenes) {
+
+      producto.imagenes.forEach(imagen => {
+
+        formData.append('imagenes', imagen);
+
+      });
+    }
+
+    // IMÁGENES VIEJAS QUE EL USUARIO QUIERE ELIMINAR
+    if (producto.imagenesEliminadas) {
+
+      producto.imagenesEliminadas.forEach(url => {
+
+        formData.append('imagenesEliminadas', url);
+
+      });
+
+    }
+
     if (producto.categoriaId) formData.append('categoriaId', producto.categoriaId);
     formData.append('stock', producto.stock.toString());
 

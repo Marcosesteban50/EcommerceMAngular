@@ -8,38 +8,39 @@ export interface ProductoDTO {
   precio: number;
   imagenes?: string[];
   categoriaId?: string;
-  categoria?: CategoriaDTO; 
+  categoria?: CategoriaDTO;
   stock: number;
-  usuarioId?: string; 
+  usuarioId?: string;
   aprobado: boolean;
 }
 
 
-export interface ProductoCreacionDTO{
+export interface ProductoCreacionDTO {
   nombre: string;
   descripcion?: string;
   precio: number;
   imagenes?: File[];
+  imagenesEliminadas?: string[];
   categoriaId?: string;
   stock: number;
 }
 
 
-export interface AgregarMasProductosDTO{
-  stock:number;
+export interface AgregarMasProductosDTO {
+  stock: number;
 }
 
 
-export interface ProductoHistorial{
-  id:string;
-  productoId:string;
-  usuarioId:string;
-  usuarioNombre:string;
-  categoria?: CategoriaDTO; 
+export interface ProductoHistorial {
+  id: string;
+  productoId: string;
+  usuarioId: string;
+  usuarioNombre: string;
+  categoria?: CategoriaDTO;
   categoriaId?: string;
-  imagenUrl?:string;
-  accion:string;
-  datosAntes:string;
-  datosDespues:string;
-  fechaCreacion:Date;
+  imagenUrl?: string;
+  accion: string;
+  datosAntes: string;
+  datosDespues: string;
+  fechaCreacion: Date;
 }

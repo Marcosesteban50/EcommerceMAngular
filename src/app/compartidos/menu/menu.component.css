@@ -105,7 +105,8 @@ a {
   border-right: 1px solid #ececec;
   outline: 0;
   font-weight: 600;
-  cursor: pointer
+  cursor: pointer;
+  
 }
 
 .search-container input {

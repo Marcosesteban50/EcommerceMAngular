@@ -59,7 +59,7 @@ export class FiltroProductoComponent implements OnInit {
   @Output()
   productosFiltrados = new EventEmitter<ProductoDTO[]>();
 
-  productos: ProductoDTO[] = []
+  productos!: ProductoDTO[];
   productoServicio = inject(ProductoService);
 
   error: string | null = null;

@@ -16,13 +16,16 @@
 </div>
 
 
-<!-- IMÁGENES NUEVAS -->
+<!-- Imagenes Nuevas -->
 <div class="imagenes-preview">
 
+
+      <!-- Recorremos cada imagen -->
     @for (imagen of imagenesBase64; track $index) {
 
     <div class="preview">
 
+        <!-- Ponemos index + 1 para ahcerlo mas agradable para el UI -->
         <img [src]="imagen" [alt]="'Imagen ' + ($index + 1)">
 
         <button type="button" class="btn-eliminar" (click)="eliminarImagen($index)">
@@ -36,23 +39,26 @@
 </div>
 
 
-<!-- IMÁGENES QUE YA EXISTÍAN AL EDITAR -->
+<!--Si hay Imagenes -->
 @if (urlImagenesActuales?.length) {
 
 <div class="imagenes-preview actuales">
 
+    <!-- Recorremos cada imagen -->
     @for (imagen of urlImagenesActuales; track $index) {
 
     <div class="preview">
 
         <img [src]="imagen" [alt]="'Imagen actual ' + ($index + 1)">
 
+        <button type="button" class="btn-eliminar" (click)="eliminarImagenActual($index)">
+            ×
+        </button>
+
     </div>
 
     }
 
 </div>
-
-
 
 }

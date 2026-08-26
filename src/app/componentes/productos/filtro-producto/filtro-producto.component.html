@@ -2,33 +2,72 @@
 
   <div class="sidebar">
 
-    <form [formGroup]="form" class="price-slider">
+    <form [formGroup]="form" class="price-filter">
 
-      <h3>Rango de Precio</h3>
+      <div class="filter-header">
+        <div>
+          <span class="filter-label">Filtrar por</span>
+          <h3>Precio</h3>
+        </div>
+
+        <i class="bi bi-sliders"></i>
+      </div>
 
       <div class="price-values">
-        <span>${{ precioMin }}</span>
-        <span>${{ precioMax }}</span>
+        <div class="price-value">
+          <span>Mínimo</span>
+          <strong>${{ precioMin }}</strong>
+        </div>
+
+        <div class="price-value">
+          <span>Máximo</span>
+          <strong>${{ precioMax }}</strong>
+        </div>
       </div>
+
 
       <div class="slider-container">
-        <input type="range" min="0" max="5000" step="1" formControlName="precioMin">
 
-        <input type="range" min="0" max="5000" step="1" formControlName="precioMax">
+        <label>
+          Precio mínimo
+        </label>
+
+        <input type="range" min="0" max="5000" step="10" formControlName="precioMin">
+
+
+        <label>
+          Precio máximo
+        </label>
+
+        <input type="range" min="0" max="5000" step="10" formControlName="precioMax">
+
       </div>
+
 
       <div class="inputs-precio">
-        <input type="number" formControlName="precioMin" placeholder="Mínimo">
 
-        <input type="number" formControlName="precioMax" placeholder="Máximo">
+        <div class="input-precio">
+          <span>$</span>
+
+          <input type="number" min="0" max="5000" formControlName="precioMin" placeholder="0">
+        </div>
+
+
+        <span class="separador">—</span>
+
+
+        <div class="input-precio">
+          <span>$</span>
+
+          <input type="number" min="0" max="5000" formControlName="precioMax" placeholder="5000">
+        </div>
+
       </div>
-
 
     </form>
 
   </div>
 
-  
   <div class="contenido-productos">
     <app-lista-productos [productos]="productos" data-aos="zoom-in" data-aos-duration="1200">
     </app-lista-productos>
