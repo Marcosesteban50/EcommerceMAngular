@@ -14,6 +14,14 @@ export interface RespuestaAutenticationDTO {
   };
 }
 
+
+export interface ContactoDTO {
+  nombre: string;
+  correo: string;
+  asunto: string;
+  mensaje: string;
+}
+
 export interface UsuarioDTO {
   email: string;
   roles?: string[];

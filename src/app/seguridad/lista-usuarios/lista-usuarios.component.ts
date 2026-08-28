@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 export class ListaUsuariosComponent {
 
   usuarios: UsuarioDTO[] = []
-  seguridadServicio = inject(SeguridadService);
+  
   cargando = true;
   error: string | null = null;
   usuariosAdmin: any[] = [];

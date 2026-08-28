@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.development';
 import {
   CredencialesUsuarioDTO,
   RespuestaAutenticationDTO,
   UsuarioDTO,
   GoogleLoginRequestDTO,
   RespuestaAutenticacionCompletaDTO,
-  UserInfo
+  UserInfo,
+  ContactoDTO
 } from './seguridad';
 import { Observable, tap, BehaviorSubject } from 'rxjs';
 
@@ -47,6 +48,10 @@ export class SeguridadService {
   // ========== MÉTODOS EXISTENTES ==========
   obtenerUsuarios(): Observable<UsuarioDTO[]> {
     return this.http.get<UsuarioDTO[]>(`${this.urlBase}/ListadoUsuarios`);
+  }
+
+  enviarCorreo(contacto: ContactoDTO): Observable<any> {
+    return this.http.post( `${this.urlBase}/EnviarCorreo` , contacto);
   }
 
   HacerAdmin(email: string) {
@@ -120,7 +125,7 @@ export class SeguridadService {
       return valor.split('@')[0];
     }
 
-//Si no retornamos el valor completo
+    //Si no retornamos el valor completo
     return valor;
 
   }
